@@ -2,7 +2,11 @@ Photoapp::Application.routes.draw do
   resources :comments
 
 
-  resources :photos
+  resources :photos do 
+    member do
+      get :vote
+    end 
+  end
 
 
   resources :collections
@@ -13,4 +17,11 @@ Photoapp::Application.routes.draw do
   root :to => "photos#index"
 
   match 'tagged' => 'photos#tagged', :as => 'tagged'
+
+  devise_scope :user do
+    match 'profile' => 'users#show', via: :get
+  end
+
+
+  
 end

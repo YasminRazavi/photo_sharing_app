@@ -1,0 +1,8 @@
+%h1 All Users
+
+%table
+  - @users.each do |user|
+    %tr
+      %td= user.name
+      %td= user.avatar
+      %td= link_to 'See profile', user
