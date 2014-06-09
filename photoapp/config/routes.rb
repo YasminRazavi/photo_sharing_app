@@ -2,7 +2,11 @@ Photoapp::Application.routes.draw do
   resources :comments
 
 
-  resources :photos
+  resources :photos do 
+    member do
+      get :vote
+    end 
+  end
 
 
   resources :collections
