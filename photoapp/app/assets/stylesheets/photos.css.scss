@@ -2,6 +2,65 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#grid {
+  list-style-type: none;
+  position: relative; /** Needed to ensure items are laid out relative to this container **/
+  
+
+}
+
+/**
+ * Grid items
+ */
+#grid li {
+
+
+width: 200px;
+background-color: #ffffff;
+border: 1px solid #dedede;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+display: none; /** Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+padding: 4px;
+
+}
+
+#grid li.inactive {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#grid li img {
+  display: block;
+  
+}
+
+/**
+ * Grid item text
+ */
+#grid li p {
+  color: #666;
+  font-size: 13px;
+  line-height: 20px;
+  text-align: center;
+  font-weight: 200;
+  margin: 7px 0 2px 7px;
+}
+
+#grid li:nth-child(3n) {
+height: 210px;
+}
+
+#grid li:nth-child(4n-3) {
+padding-bottom: 30px;
+}
+
+#grid li:nth-child(5n) {
+height: 350px;
+}
+
 
 /*
 .homephotos {
