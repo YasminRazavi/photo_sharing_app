@@ -22,17 +22,36 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'carrierwave', '0.9.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+gem 'rmagick'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'ransack'
 
-# Deploy with Capistrano
-# gem 'capistrano'
+gem 'haml-rails'
 
-# To use debugger
-# gem 'debugger'
+gem 'devise' 
+# Includes bcrypt
+
+gem 'cancan'
+
+gem 'acts-as-taggable-on', '~> 2.4.1'
+
+gem "fog", "~> 1.3.1"
+
+gem 'acts_as_votable', '~> 0.9.0'
+
+gem "acts_as_follower"
+
+gem 'will_paginate', '~> 3.0'
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'pry-byebug'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
+  gem 'hirb'
+  gem 'sextant'
+  gem 'letter_opener'
+end
