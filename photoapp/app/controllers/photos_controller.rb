@@ -80,4 +80,13 @@ class PhotosController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def tagged
+    if params[:tag].present? 
+      @photos = Photo.tagged_with(params[:tag])
+    else 
+      @photos = Photo.postall
+    end  
+  end
+
 end
