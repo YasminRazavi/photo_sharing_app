@@ -11,4 +11,6 @@ Photoapp::Application.routes.draw do
   devise_for :users
 
   root :to => "photos#index"
+
+  match 'tagged' => 'photos#tagged', :as => 'tagged'
 end

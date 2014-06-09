@@ -7,6 +7,10 @@
   %b Caption:
   = @photo.caption
 %p
+  %b Tags:
+  - @photo.tags.each do |tag|
+    = link_to tag.name, tagged_url(:tag => tag.name)
+%p
   %b User:
   = @photo.user
 %p
