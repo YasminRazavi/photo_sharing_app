@@ -4,5 +4,6 @@ class Photo < ActiveRecord::Base
   belongs_to :collection, :class_name=> "Collection", :foreign_key => "collection_id"
   has_many :comments
 
+  acts_as_votable
   acts_as_taggable_on :tags
 end

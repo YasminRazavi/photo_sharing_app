@@ -89,4 +89,12 @@ class PhotosController < ApplicationController
     end  
   end
 
+  def vote 
+    current_user
+    puts "#{current_user.first_name} liked me!!"
+    @photo = Photo.find(params[:id])
+    @photo.liked_by current_user
+    redirect_to photos_path
+  end
+
 end

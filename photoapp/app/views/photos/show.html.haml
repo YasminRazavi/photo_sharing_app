@@ -19,7 +19,12 @@
 %p
   %b Image:
   = @photo.image
+%p
+  %b Likes:
+  = @photo.votes_for.size
 
+= link_to 'like me?', vote_photo_path(@photo)
+\|
 = link_to 'Edit', edit_photo_path(@photo)
 \|
 = link_to 'Back', photos_path
