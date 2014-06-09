@@ -1,3 +1,25 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.homephotos {
+
+  width: 300px;
+  height: 400px;
+  border-color: white;
+  border:3px;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.container {
+  width: 30%;
+  height: 450px;
+  display: inline;
+  background-color: red;
+   padding: 5px;
+
+}
+
