@@ -23,16 +23,16 @@ col6 = Collection.create(:title => "sunglasses", :description => "shades for the
 #pens
 photo1 = Photo.create(:title=> "Silver pen", :user_id=>1, :collection_id=>1, :caption=>"pen from van", :image=>"http://johnlewis.scene7.com/is/image/JohnLewis/230953752?$prod_main$")
 
-photo2 = Photo.create(:title=> "black pen", :user_id=>1, :collection_id=>1, :caption=>"pen from london", :image=>"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-WfIpV46KkupNsO3mC9POyTzofx0PAckXyreeGF60uXK4xUwO6nJ0qg")
-photo3 = Photo.create(:title=> "red pen", :user_id=>1, :collection_id=>1, :caption=>"pen from van", :image=>"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRqSowbVMF-p--nMAsphB-TQTaDvpu60TraPBdb6rwrAZQA9i5798Jxp4A")
+photo2 = Photo.create(:title=> "black pen", :user_id=>1, :collection_id=>1, :caption=>"pen from london", :image=>"http://fpgeeks.com/wp-content/uploads/2013/04/parker_duofold_mandarin_yellow_fountain_pen_limited_edition-e1366989899963.jpg")
+photo3 = Photo.create(:title=> "red pen", :user_id=>1, :collection_id=>1, :caption=>"pen from van", :image=>"http://s7ondemand4.scene7.com/is/image/Signet/9890300?$detail$")
 
-photo4 = Photo.create(:title=> "green pen", :user_id=>1, :collection_id=>1, :caption=>"pen from paris", :image=>"https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSvyIfN1PuZpAYqoOU3fswYEUNQpNqqn-jWYaW97dww9wbVbJEo-ztEnkc")
+photo4 = Photo.create(:title=> "green pen", :user_id=>1, :collection_id=>1, :caption=>"pen from paris", :image=>"http://mont-blanc-pens.info/wp-content/uploads/2008/10/montblanc_limited_edition_boheme_papillon_fountain_pen.png")
 
 #t-shirts
 photo5 = Photo.create(:title=> "smiley tshirt", :user_id=>1, :collection_id=>2, :caption=>"mom bought this pour moi when I was 5", :image=>"http://www.articlesweb.org/blog/wp-content/gallery/fun-shirts-a-new-dressing-tradition-among-youngsters/fun-shirts-a-new-dressing-tradition-among-youngsters-4.jpg")
 photo6 = Photo.create(:title=> "upset t-shirt", :user_id=>1, :collection_id=>2, :caption=>"i lost a running competition", :image=>"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS5WLLVgPSac_Nz-e9pBAi7v1FFb-rLJunGAfnZrmAFPH9iY9h2nQL7xrQ")
-photo7 = Photo.create(:title=> "neon t-shirt", :user_id=>1, :collection_id=>2, :image=>"https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTrdK5zQvp7xVaofjD-Vq278QFY1Dz29PD0xMk-p3Jo7v4MIjvUlOPBJg")
-photo8 = Photo.create(:title=> "cool t", :user_id=>1, :collection_id=>2, :caption=>"Guns n Roses", :image=>"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUffNgv2DugOr34wmL6XT9JCYUmwx3lqdbBpzyN-udwzBfzN4S07BTWc8")
+photo7 = Photo.create(:title=> "Comme de garcon", :user_id=>1, :collection_id=>2, :image=>"http://www.monsieurjerome.com/wp-content/uploads/2012/08/a-bathing-ape-x-play-comme-des-garcons-2012-capsule-collection-4.jpg")
+photo8 = Photo.create(:title=> "cool t", :user_id=>1, :collection_id=>2, :caption=>"KWEL", :image=>"http://www.songhi.com/wp-content/uploads/2014/02/staycool.jpg")
 
 
 #sneakers

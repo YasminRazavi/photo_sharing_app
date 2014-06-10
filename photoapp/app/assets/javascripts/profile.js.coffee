@@ -6,14 +6,18 @@ $(document).ready ->
     success: (data) ->
       $.each(data, appendCollection)
 
+
   appendPhotosForCollection = (id) ->
-    console.log id
-    $.ajax '/my_collections',
+
+    $.ajax "/collections/#{id}/photos",
       type: 'GET'
       dataType: 'json'
       success: (data) ->
-        $.each(data, appendCollection)
-  appendCollection = (i, collection)->
-    html = "<div class='col_cont'>#{collection.title}</div>"
+        #<img id=photo_#{photo.id} class='col_photo_thumb' src=#{photo.image}>
+        # $.each(data, appendCollection)
+  appendCollection = (i, collection) ->
+    html = "<div class='col_cont'>#{collection.title} </div>"
     $(".collections_container").append html
     appendPhotosForCollection(collection.id)
+
+  

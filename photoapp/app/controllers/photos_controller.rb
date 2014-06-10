@@ -2,7 +2,12 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    
+    @photos = if params[:collection_id].present?
+      Collection.find(params[:collection_id]).photos
+    else
+      Photo.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
