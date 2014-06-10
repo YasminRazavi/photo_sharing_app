@@ -2,7 +2,12 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    
+    @photos = if params[:id].present?
+      Collection.find(params[:id]).photos.order("created_at DESC").limit(4)
+    else
+      Photo.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

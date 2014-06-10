@@ -27,12 +27,6 @@ padding: 4px;
 
 }
 
-#grid li.zoomed {
-  margin: auto;
-  width: 400px;
-  vertical-align: center;
-  
-}
 
 #grid li.inactive {
   visibility: hidden;
@@ -40,8 +34,8 @@ padding: 4px;
 }
 
 #grid li img {
-  display: block;
-  
+/*  display: block;
+*/  
 }
 
 /**
@@ -49,11 +43,12 @@ padding: 4px;
  */
 #grid li p {
   color: #666;
-  font-size: 13px;
+  font-size: 16px;
   line-height: 20px;
-  text-align: center;
+  text-align: top;
   font-weight: 200;
   margin: 7px 0 2px 7px;
+  display: inline;
 }
 
 #grid li:nth-child(3n) {
@@ -68,6 +63,52 @@ padding-bottom: 30px;
 height: 350px;
 }
 
+#grid li.zoomed {
+  margin: auto;
+  width: 50%;
+  height: 5000px;
+  vertical-align: center;
+  
+}
+
+.user_photo_comments {
+ -moz-border-radius:52px;
+ -webkit-border-radius:52px;
+ border-radius:52px;
+width:50px;
+height:50px;
+text-align: bottom;
+opacity:1;
+margin-bottom: 0;
+display: inline;
+
+}
+
+
+
+.users {
+  border-radius: 4px;
+  border: 1px solid lightgrey;
+  padding:2px;
+  margin-top: 1px;
+
+  h2 {
+    font-size: 20px
+  }
+
+  p {
+
+
+  }
+
+}
+
+.commentbox {
+  width: 60%;
+  height: 80px;
+  border-radius: 4px;
+
+}
 
 /*
 .homephotos {

@@ -1,23 +1,16 @@
-%h1 
-  = current_user.first_name
+#user_profile
+  :javascript
+    window.user_id = #{@user.id}
+  %h1 
+    = @user.first_name
 
-%p
-  = image_tag current_user.avatar
+  %p
+    = image_tag @user.avatar, :class => "userimage"
 
-%p
-  %b Bio:
-  = current_user.bio
-%p
-  %b Collections:
-  - collections = current_user.collections
-
-  - collections.each do |collection|
-    %tr
-      %td= collection.title
-      %td
-        - photos = collection.photos
-        - photos.each do |photo|
-          = image_tag photo.image
-      %td= link_to 'Show', collection
-      %td= link_to 'Edit', edit_collection_path(collection)
-      %td= link_to 'Destroy', collection, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %p
+    %b Bio:
+    = @user.bio
+  %div.collections_container
+    %b Collections:
+    %br
+    
