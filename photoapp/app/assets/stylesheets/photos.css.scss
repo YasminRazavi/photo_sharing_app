@@ -27,6 +27,13 @@ padding: 4px;
 
 }
 
+#grid li.zoomed {
+  margin: auto;
+  width: 400px;
+  vertical-align: center;
+  
+}
+
 #grid li.inactive {
   visibility: hidden;
   opacity: 0;
