@@ -2,8 +2,11 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
-
+    @comments = if params[:photo_id]
+       Photo.find(params[:photo_id]).comments
+    else
+      Comment.all
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comments }
@@ -17,7 +20,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @comment }
+      format.json { render json: @comment}
     end
   end
 

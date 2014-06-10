@@ -6,7 +6,10 @@ Photoapp::Application.routes.draw do
     member do
       get :vote
     end 
+    resources :comments
   end
+
+
 
 
   resources :collections
