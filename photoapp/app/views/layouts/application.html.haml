@@ -19,4 +19,34 @@
         = link_to 'Login', new_user_session_path
     - flash.each do |name, msg|
       = content_tag :div, msg, :id => "flash_#{name}"
+%header#top.navbar.navbar-default{role: "banner"}
+  .container
+    .navbar-header
+      %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to 'GA', root_path, :class => "navbar-brand"
+    %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
+      %ul.nav.navbar-nav
+        %li
+          = link_to 'Programs',  :class => "nav navbar-nav"
+        %li.active
+          %a{href: "../css"} CSS
+        %li
+          = link_to 'Users',  :class => "nav navbar-nav"
+        %li
+          = link_to 'Courses', :class => "nav navbar-nav"
+        %li
+          = link_to 'Cohorts', :class => "nav navbar-nav"
+        %li
+          = link_to 'Cohorts', :class => "nav navbar-nav"
+        %li
+          = link_to 'Cohorts', :class => "nav navbar-nav"
+      %ul.nav.navbar-nav.navbar-right
+        %li
+          %a{href: "http://expo.getbootstrap.com", onclick: "_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Expo']);"} Expo
+        %li
+          %a{href: "http://blog.getbootstrap.com", onclick: "_gaq.push(['_trackEvent', 'Navbar', 'Community links', 'Blog']);"} Blog
     = yield

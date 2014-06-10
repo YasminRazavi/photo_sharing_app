@@ -11,5 +11,9 @@
  *= require_self
  *= require_tree .
  */
+.inputFields{
 
+  width:300px;
+  margin-bottom: 5px;
+}
 
