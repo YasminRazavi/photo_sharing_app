@@ -1,10 +1,5 @@
 $(document).ready ->
-
-  $.ajax '/my_collections',
-    type: 'GET'
-    dataType: 'json'
-    success: (data) ->
-      $.each(data, appendCollection)
+  
 
 
   appendPhotosForCollection = (id) ->
@@ -24,3 +19,13 @@ $(document).ready ->
     appendPhotosForCollection(collection.id)
 
   
+  getCollections = (url) ->
+    $.ajax url,
+      type: 'GET'
+      dataType: 'json'
+      success: (data) ->
+        $.each(data, appendCollection)
+  if !!$("#my_profile").length
+    getCollections("/my_collections")
+  else if !!$("#user_profile").length and window.user_id?
+    getCollections("/users/#{window.user_id}/collections")

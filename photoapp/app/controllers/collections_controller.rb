@@ -5,6 +5,8 @@ class CollectionsController < ApplicationController
 
     @collections = if params[:collections_type] == :my_collections
       current_user.collections
+    elsif params[:user_id].present?
+      User.find(params[:user_id]).collections
     else
       Collection.all
     end
