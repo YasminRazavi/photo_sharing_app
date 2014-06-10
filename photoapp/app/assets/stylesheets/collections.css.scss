@@ -7,6 +7,7 @@
   background-color: white;
   display: inline;
   padding: 30px;
+  padding-top: 10px;
   float: left;
   border: 1px solid #dedede;
   -moz-border-radius: 5px;
@@ -29,9 +30,14 @@
 .container_head {
   float: left;
   background-color: white;
-  height: 20px;
+  height: 40px;
   width: 360px;
 
+}
+
+.collections_container {
+  float: left;
+  clear: both;
 }
 
 
