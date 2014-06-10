@@ -1,15 +1,17 @@
 Photoapp::Application.routes.draw do
   resources :comments
 
-
+  resources :photos do 
+    member do
+      get :vote
+    end 
+  end
   
 
 
   resources :collections do 
-    resources :photos, shallow: true do 
-      member do
-        get :vote
-      end 
+    member do 
+      get :photos, to: "photos#index"
     end
   end
 

@@ -13,10 +13,13 @@ $(document).ready ->
       type: 'GET'
       dataType: 'json'
       success: (data) ->
-        #<img id=photo_#{photo.id} class='col_photo_thumb' src=#{photo.image}>
-        # $.each(data, appendCollection)
+        $.each data, (i, photo) ->
+          $("#collection-container-#{id}").append(
+            "<img id=photo_#{photo.id} class='col_photo_thumb' src=#{photo.image}>"
+          )
+        
   appendCollection = (i, collection) ->
-    html = "<div class='col_cont'>#{collection.title} </div>"
+    html = "<div id='collection-container-#{collection.id}' class='col_cont'>#{collection.title} </div>"
     $(".collections_container").append html
     appendPhotosForCollection(collection.id)
 
