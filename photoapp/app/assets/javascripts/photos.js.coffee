@@ -35,6 +35,12 @@ submitComment = ->
     type: 'POST'
     data: {comment:{text:$("#addComment").val(),
     photo_id: $(this).data("id") }}
+
+  displayComments = (comments)->
+    console.log "comments", comments
+
+  $.ajax '/photos',
+    type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) ->
       console.log(data)
@@ -68,6 +74,7 @@ showAllPhotos = (e) ->
           offset: 5, 
           flexibleWidth: 0
           itemWidth: 210
+
         })
     
 $ ->
@@ -78,22 +85,4 @@ $ ->
   
   
   
-  
-
-
-
-
-
-
-  
-
-  
-
-
-
-
-
-
-
-
-
+              

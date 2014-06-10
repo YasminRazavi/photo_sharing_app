@@ -1,3 +1,38 @@
 // Place all the styles related to the collections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.col_cont {
+  width: 380px;
+  height: 400px;
+  background-color: white;
+  display: inline;
+  padding: 30px;
+  float: left;
+  border: 1px solid #dedede;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.col_photo_thumb {
+  width: 180px;
+  height: 180px;
+  float: left;
+  margin: auto;
+  border: 1px solid #dedede;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  padding: 4px;
+}
+
+.container_head {
+  float: left;
+  background-color: white;
+  height: 20px;
+  width: 360px;
+
+}
+
+
+

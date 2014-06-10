@@ -3,6 +3,5 @@
 %table
   - @users.each do |user|
     %tr
-      %td= user.name
-      %td= user.avatar
-      %td= link_to 'See profile', user
+      %td= image_tag user.avatar, :class => "userimage"
+      %td= link_to user.first_name, "/users/#{user.id}"
