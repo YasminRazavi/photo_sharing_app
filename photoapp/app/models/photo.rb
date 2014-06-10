@@ -6,4 +6,7 @@ class Photo < ActiveRecord::Base
 
   acts_as_votable
   acts_as_taggable_on :tags
+
+  validates :collection_id, presence: true
+  validates :image, presence: true
 end
