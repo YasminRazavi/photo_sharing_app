@@ -2,14 +2,16 @@ Photoapp::Application.routes.draw do
   resources :comments
 
 
-  resources :photos do 
-    member do
-      get :vote
-    end 
+  
+
+
+  resources :collections do 
+    resources :photos, shallow: true do 
+      member do
+        get :vote
+      end 
+    end
   end
-
-
-  resources :collections
 
 
   devise_for :users
@@ -17,6 +19,8 @@ Photoapp::Application.routes.draw do
   root :to => "photos#index"
 
   match 'tagged' => 'photos#tagged', :as => 'tagged'
+
+  get "/my_collections", to: "collections#index", collections_type: :my_collections
 
   devise_scope :user do
     match 'profile' => 'users#profile', via: :get

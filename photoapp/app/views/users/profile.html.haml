@@ -7,17 +7,7 @@
 %p
   %b Bio:
   = current_user.bio
-%p
+%div.collections_container
   %b Collections:
-  - collections = current_user.collections
-
-  - collections.each do |collection|
-    .col_cont
-      = collection.title
-      
-      - photos = collection.photos
-      - photos.each do |photo|
-        = image_tag photo.image, :class => "col_photo_thumb"
-      = link_to 'Show', collection
-      = link_to 'Edit', edit_collection_path(collection)
-      = link_to 'Destroy', collection, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  %br
+  

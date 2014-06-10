@@ -2,7 +2,12 @@ class CollectionsController < ApplicationController
   # GET /collections
   # GET /collections.json
   def index
-    @collections = Collection.all
+
+    @collections = if params[:collections_type] == :my_collections
+      current_user.collections
+    else
+      Collection.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

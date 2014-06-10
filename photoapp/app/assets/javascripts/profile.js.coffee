@@ -1,18 +1,19 @@
 $(document).ready ->
 
- $.ajax '/collections',
-        type: 'GET'
-        dataType: 'json'
-        success: (data) ->
-            $.each(data.photos, appendPhotos)
+  $.ajax '/my_collections',
+    type: 'GET'
+    dataType: 'json'
+    success: (data) ->
+      $.each(data, appendCollection)
 
-# appendPhotos = ->
-#   _(collections).each.photos
-
-
-#   _(photosArray).each((photo) -> $('#grid').append("<li><img id=#{photo.id} class=homephotos src= #{photo.image} width=300 height=400 ><li>"))
-
-#     success: function(data) {
-#         $.each(data.moves, draw_cell)
-#         //$('.game_container').html(data);
-#       },
+  appendPhotosForCollection = (id) ->
+    console.log id
+    $.ajax '/my_collections',
+      type: 'GET'
+      dataType: 'json'
+      success: (data) ->
+        $.each(data, appendCollection)
+  appendCollection = (i, collection)->
+    html = "<div class='col_cont'>#{collection.title}</div>"
+    $(".collections_container").append html
+    appendPhotosForCollection(collection.id)
