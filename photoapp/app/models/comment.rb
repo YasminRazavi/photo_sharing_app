@@ -8,8 +8,8 @@ class Comment < ActiveRecord::Base
       text: text, 
       user_id: user_id,
       user:{
-        name:user.first_name,
-        avatar: user.avatar
+        name:user.first_name ,
+        avatar: user.avatar  
       }
     }
   end
