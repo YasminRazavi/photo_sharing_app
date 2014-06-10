@@ -1,15 +1,15 @@
 %h1 
-  = current_user.first_name
+  = @user.first_name
 
 %p
-  = image_tag current_user.avatar
+  = image_tag @user.avatar
 
 %p
   %b Bio:
-  = current_user.bio
+  = @user.bio
 %p
   %b Collections:
-  - collections = current_user.collections
+  - collections = @user.collections
 
   - collections.each do |collection|
     %tr

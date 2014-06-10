@@ -19,7 +19,9 @@ Photoapp::Application.routes.draw do
   match 'tagged' => 'photos#tagged', :as => 'tagged'
 
   devise_scope :user do
-    match 'profile' => 'users#show', via: :get
+    match 'profile' => 'users#profile', via: :get
+    match 'users' => 'users#index', via: :get
+    match 'users/:id' => 'users#show', via: :get
   end
 
 

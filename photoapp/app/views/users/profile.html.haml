@@ -1,0 +1,23 @@
+%h1 
+  = current_user.first_name
+
+%p
+  = image_tag current_user.avatar
+
+%p
+  %b Bio:
+  = current_user.bio
+%p
+  %b Collections:
+  - collections = current_user.collections
+
+  - collections.each do |collection|
+    .col_cont
+      = collection.title
+      
+      - photos = collection.photos
+      - photos.each do |photo|
+        = image_tag photo.image, :class => "col_photo_thumb"
+      = link_to 'Show', collection
+      = link_to 'Edit', edit_collection_path(collection)
+      = link_to 'Destroy', collection, :method => :delete, :data => { :confirm => 'Are you sure?' }

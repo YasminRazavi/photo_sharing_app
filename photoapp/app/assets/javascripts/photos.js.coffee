@@ -15,7 +15,7 @@ $('#grid li').wookmark({
     autoResize: true, 
     container: $('#tiles'), 
     offset: 2, 
-    itemWidth: 210 // Optional, the width of a grid item
+    itemWidth: 210 #Optional, the width of a grid item
   });
 
 # $('.grid').wookmark({align: 'center',
