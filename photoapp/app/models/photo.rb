@@ -6,4 +6,21 @@ class Photo < ActiveRecord::Base
 
   acts_as_votable
   acts_as_taggable_on :tags
+
+  def as_json(options)
+    {
+      id: id,
+      caption: caption, 
+      collection_id: collection_id,
+      user_id: user_id,
+      title: title,
+      image: image, 
+      tags: tags,
+      user: {
+        name: user.first_name,
+        avatar: user.avatar
+      },
+      likes: get_likes.size
+    }
+  end
 end
