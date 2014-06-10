@@ -5,8 +5,10 @@ Photoapp::Application.routes.draw do
     member do
       get :vote
     end 
+    resources :comments
   end
   
+
 
 
   resources :collections do 
@@ -14,6 +16,7 @@ Photoapp::Application.routes.draw do
       get :photos, to: "photos#index"
     end
   end
+
 
 
   devise_for :users
