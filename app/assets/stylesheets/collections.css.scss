@@ -16,17 +16,28 @@
   border-radius: 5px;
 }
 
-.col_photo_thumb {
-  width: 180px;
-  height: 180px;
-  width: 45%;
+.photo_frame {
+  width: 140px;
+  height: 170px;
   float: left;
   margin: auto;
   border: 1px solid #dedede;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  padding: 4px;
+  padding: 4px;  
+}
+
+.col_photo_thumb {
+  max-width: 135px;
+  max-height: 165px;
+  // float: left;
+  // margin: auto;
+  // border: 1px solid #dedede;
+  // -moz-border-radius: 2px;
+  // -webkit-border-radius: 2px;
+  // border-radius: 2px;
+  // padding: 4px;
 }
 
 .container_head {

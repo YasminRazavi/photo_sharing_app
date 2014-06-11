@@ -10,7 +10,7 @@ $(document).ready ->
       success: (data) ->
         $.each data, (i, photo) ->
           $("#collection-container-#{id}").append(
-            "<img id=photo_#{photo.id} class='col_photo_thumb' src=#{photo.image}>"
+            "<div class='photo_frame'><img id=photo_#{photo.id} class='col_photo_thumb' src=#{photo.image}></div>"
           )
         
   appendCollection = (i, collection) ->
