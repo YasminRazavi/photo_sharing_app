@@ -48,7 +48,9 @@ enlargePhoto = ->
   $(this).removeClass("photo-container").addClass("zoomed").css({position: "initial"}).show() 
   loadCommentsForPhoto(id)
   loadcontentsForPhoto(id)
-
+  $("#grid li").show().css({zIndex:"-1", opacity: "0.1"})
+  $(this).css(opacity:"1")
+  
 submitComment = ->
   $.ajax "/comments",
     type: 'POST'
