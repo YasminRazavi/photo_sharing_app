@@ -91,6 +91,25 @@ showAllPhotos = (e) ->
 
         })
 
+showCollectionPhotos = (e) ->
+    # $("#grid").empty()
+    # $.ajax "#{document.location.href}/photos",
+    #   type: 'GET'
+    #   dataType: 'json'
+    #   success: (data, textStatus, jqXHR) ->
+    #     console.log(data)
+    #     displayPhoto(data)
+
+        $('#grid li').wookmark({
+          align: 'center',
+          autoResize: false, 
+          container: $('#grid'), 
+          offset: 5, 
+          flexibleWidth: 0
+          itemWidth: 210
+
+        })      
+
 
 # SEARCH SECTION
 
@@ -99,7 +118,11 @@ $ ->
   $(document).on "click", "li.photo-container", enlargePhoto
   $(document).on "click", ".submitcomment", submitComment
   $(document).on 'click', ".back-to-list", showAllPhotos
-  showAllPhotos()
+
+  if document.location.pathname.match /collections\/\d+/
+    showCollectionPhotos()
+  else if document.location.pathname == "/" || document.location.pathname == "/photos"
+    showAllPhotos()
   
   
   
