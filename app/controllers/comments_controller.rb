@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   def create
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
-    authorize! :create, @comment
+    # authorize! :create, @comment
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
