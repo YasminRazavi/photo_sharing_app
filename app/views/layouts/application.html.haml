@@ -6,37 +6,38 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     =favicon_link_tag "favicon.png"
-/ %header#top.navbar.navbar-default.navbar-fixed-top
-%header#top.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      = link_to 'LOGO_HERE', "root_path.com", :class => "navbar-brand"
-    %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
-      %ul.nav.navbar-nav
-        %li
-          = link_to 'Home', root_path, :class => "nav navbar-nav"
-        %li
-          = link_to 'Users', users_path, :class => "nav navbar-nav"
-        - if user_signed_in?
-          %li
-            = link_to 'Profile', profile_path, :class => "nav navbar-nav"
-          %li
-            = link_to 'Upload Photo',new_photo_path, :class => "nav navbar-nav"
-      %ul.nav.navbar-nav.navbar-right
-        - if !user_signed_in?
-          %li
-            = link_to 'Sign Up', new_user_registration_path
-          %li
-            = link_to 'Log In', new_user_session_path
-        - else
-          %li
-            = link_to 'Logout', destroy_user_session_path, method: :delete
-%body
-  - flash.each do |name, msg|
-    = content_tag :div, msg, :id => "flash_#{name}"
-  = yield
+  / %header#top.navbar.navbar-default.navbar-fixed-top
+  %body
+    %header#top.navbar.navbar-default.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to image_tag( 'https://s3.amazonaws.com/uploads.hipchat.com/39979/788210/RinUMBtuUzObQtK/logo_740946_web%20%281%29.jpg'), root_path
+        %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
+          %ul.nav.navbar-nav
+            %li
+              = link_to 'Home', root_path, :class => "nav navbar-nav"
+            %li
+              = link_to 'Users', users_path, :class => "nav navbar-nav"
+            - if user_signed_in?
+              %li
+                = link_to 'Profile', profile_path, :class => "nav navbar-nav"
+              %li
+                = link_to 'Upload Photo',new_photo_path, :class => "nav navbar-nav"
+          %ul.nav.navbar-nav.navbar-right
+            - if !user_signed_in?
+              %li
+                = link_to 'Sign Up', new_user_registration_path
+              %li
+                = link_to 'Log In', new_user_session_path
+            - else
+              %li
+                = link_to 'Logout', destroy_user_session_path, method: :delete
+    #main
+      - flash.each do |name, msg|
+        = content_tag :div, msg, :id => "flash_#{name}"
+      = yield
