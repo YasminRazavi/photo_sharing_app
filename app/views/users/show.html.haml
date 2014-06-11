@@ -1,16 +1,15 @@
 #user_profile
   :javascript
     window.user_id = #{@user.id}
-  %h1 
-    = @user.first_name
+  .profile_name
+    %h1 
+      = @user.first_name
 
   %p
-    = image_tag @user.avatar, :class => "userimage"
+    .avatar
+      = image_tag @user.avatar, :class => "userimage"
 
   %p
-    %b Bio:
-    = @user.bio
+    .bio
+      = @user.bio
   %div.collections_container
-    %b Collections:
-    %br
-    

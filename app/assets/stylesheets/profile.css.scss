@@ -1,3 +1,9 @@
+.profile_name{
+  float: left;
+  margin-left: 3%;
+  clear: both;
+}
+
 .userimage{
   -moz-border-radius:52px;
   -webkit-border-radius:52px;
@@ -7,6 +13,7 @@
   text-align: bottom;
   opacity:1;
   margin-bottom: 0;
+  margin-left: 10%;
 }
 
 .thumbnailimage{
@@ -20,9 +27,11 @@
 
 .avatar {
   float: left;
-
+  margin-left: 3%;
+  clear: both;
 }
 
 .bio {
   float: left;
+  margin-left: 10%;
 }

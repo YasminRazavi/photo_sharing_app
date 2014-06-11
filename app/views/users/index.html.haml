@@ -3,5 +3,9 @@
 %table
   - @users.each do |user|
     %tr
-      %td= image_tag user.avatar, :class => "userimage"
-      %td= link_to user.first_name, "/users/#{user.id}"
+      .avatar
+        %td= image_tag user.avatar, :class => "userimage"
+      %td
+        %h3
+          .profile_name
+            =link_to user.first_name, "/users/#{user.id}"

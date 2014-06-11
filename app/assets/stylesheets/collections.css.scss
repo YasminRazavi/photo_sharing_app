@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .col_cont {
-  width: 380px;
-  height: 400px;
+  width: 30%;
+
   background-color: white;
   display: inline;
   padding: 30px;
@@ -16,8 +16,10 @@
 }
 
 .col_photo_thumb {
-  width: 180px;
-  height: 180px;
+  // width: 180px;
+  // height: 180px;
+  width: 45%;
+  height: 45%;
   float: left;
   margin: auto;
   border: 1px solid #dedede;
@@ -30,12 +32,14 @@
 .container_head {
   float: left;
   background-color: white;
-  height: 40px;
-  width: 360px;
+  height: 15%;
+  width: 100%;
 
 }
 
 .collections_container {
+  margin-top: 3%;
+  margin-left: 3%;
   float: left;
   clear: both;
 }
