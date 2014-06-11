@@ -7,7 +7,7 @@ Collection.delete_all
 
 user1 = User.create(:first_name=>"Sara", :last_name => "knight", :avatar => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user")
 user2 = User.create(:first_name=>"Yasmin", :last_name => "Razavi", :avatar => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
-user3 = User.create(:first_name=>"Sri", :last_name => "Sri", :avatar => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
+user3 = User.create(:first_name=>"Sri", :last_name => "Sri", :avatar => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "admin")
 
 
 # Generating two collections per user3

@@ -29,16 +29,13 @@
                   #pic
                     = image_tag(current_user.avatar)
               %li
-
                 = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
                   %button.btn.btn-success.btn-lg
                     %span.glyphicon.glyphicon-circle-arrow-up
-
               %li
                 = search_form_for @q, url: search_path  do |f|
-                  = f.search_field :title_or_caption_cont, placeholder: "search..."
+                  = f.search_field :title_or_caption_cont, placeholder: "search...", :id => 'typeaheadBar'
                   = f.submit
-
           %ul.nav.navbar-nav.navbar-right
             - if !user_signed_in?
               %li
@@ -53,3 +50,5 @@
         #flashNav
           = content_tag :div, msg, :id => "flash_#{name}"
       = yield
+
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"

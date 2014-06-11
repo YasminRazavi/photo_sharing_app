@@ -33,7 +33,8 @@ class PhotosController < ApplicationController
     @photos.uniq!
     # @photos = Photo.where("title LIKE ?", "%#{params[:q]}%") \
     # | Photo.tagged_with("%#{params[:q]}%")
-    render json: @photos
+    
+
   end
 
   # GET /photos/1

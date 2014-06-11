@@ -17,4 +17,14 @@
 
 $(document).ready(function(){
   $('#flashNav').delay(2000).slideUp(1000);
+
+  $('#typeaheadBar').typeahead([
+    {
+      name: 'planets',
+      remote: 'http://jsonip.com/'
+
+    }
+  ]);
+
 });
+
