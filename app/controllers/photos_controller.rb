@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-
+  
   before_filter :authenticate_user!, except: [:index, :show]
   
 
@@ -44,6 +44,7 @@ class PhotosController < ApplicationController
   # GET /photos/1/edit
   def edit
     @photo = Photo.find(params[:id])
+    authorize! :edit, @photo
   end
 
   # POST /photos
