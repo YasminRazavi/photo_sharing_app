@@ -1,15 +1,22 @@
 %p#notice= notice
+%ul#grid
+  - @collection.photos.each do |photo|
+    %li.photo-container{"data-id" => photo.id}
+      %img.homephotos{"data-id" => photo.id, :src => photo.image, :width => 200}
 
-%p
-  %b Title:
-  = @collection.title
-%p
-  %b Description:
-  = @collection.description
-%p
-  %b User:
-  = @collection.user
 
-= link_to 'Edit', edit_collection_path(@collection)
-\|
-= link_to 'Back', collections_path
+/ %p
+/   %b Title:
+/   = @collection.title
+/ %p
+/   %b Description:
+/   = @collection.description
+/ %p
+/   %b User:
+/   = @collection.user
+
+/ = link_to 'Edit', edit_collection_path(@collection)
+/ \|
+/ = link_to 'Back', collections_path
+
+

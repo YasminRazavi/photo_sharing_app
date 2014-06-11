@@ -1,6 +1,7 @@
 #my_profile
-  %h1 
-    = current_user.first_name
+  .profile_name
+    %h1 
+      = current_user.first_name
 
   %p
     .avatar
@@ -8,10 +9,8 @@
 
   %p
     .bio
-      %b Bio:
       = current_user.bio
 
   %div.collections_container
-    %b Collections:
-    %br
+    
     

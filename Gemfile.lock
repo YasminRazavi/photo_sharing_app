@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/charliesome/better_errors.git
+  revision: c4476997872b5f24310cde34cb2dcf7ab01ccffd
+  branch: master
+  specs:
+    better_errors (1.1.0)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -35,9 +44,6 @@ GEM
     addressable (2.3.6)
     arel (3.0.3)
     bcrypt (3.1.7)
-    better_errors (1.1.0)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     bootstrap-glyphicons (0.0.1)
@@ -209,7 +215,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 2.4.1)
   acts_as_follower
   acts_as_votable (~> 0.9.0)
-  better_errors
+  better_errors!
   binding_of_caller
   bootstrap-glyphicons
   cancan

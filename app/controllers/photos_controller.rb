@@ -7,7 +7,11 @@ class PhotosController < ApplicationController
   # GET /photos.json
   def index
     @photos = if params[:id].present?
-      Collection.find(params[:id]).photos.order("created_at DESC").limit(4)
+      if params[:limit]
+        Collection.find(params[:id]).photos.order("created_at DESC").limit(4)
+      else
+        Collection.find(params[:id]).photos.order("created_at DESC")
+      end
     else
       Photo.all
     end
