@@ -1,5 +1,5 @@
 .profile_name{
-  float: left;
+
   margin-left: 3%;
   clear: both;
 }
@@ -25,7 +25,7 @@
   margin-bottom: 0;
 }
 
-.avatar {
+.profile_avatar {
   float: left;
   margin-left: 3%;
   clear: both;
@@ -35,3 +35,11 @@
   float: left;
   margin-left: 10%;
 }
+
+.user_frame {
+  width: 65px;
+  height: 80px;
+  text-align: center;
+  padding: 3px;
+}
+

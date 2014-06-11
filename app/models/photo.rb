@@ -23,7 +23,7 @@ class Photo < ActiveRecord::Base
       tags: tags,
       user: {
         name: user.first_name,
-        avatar: user.avatar
+        avatar: user.avatar.url
       },
       likes: get_likes.size
     }

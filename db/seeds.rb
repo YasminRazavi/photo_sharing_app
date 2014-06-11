@@ -5,12 +5,16 @@ Collection.delete_all
 
 #Generating three users
 
-user1 = User.create(:first_name=>"Sara", :last_name => "knight", :avatar => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user")
-user2 = User.create(:first_name=>"Yasmin", :last_name => "Razavi", :avatar => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
-user3 = User.create(:first_name=>"Sri", :last_name => "Sri", :avatar => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
+user1 = User.create(:first_name=>"Sara", :last_name => "knight", :remote_avatar_url => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user")
+user2 = User.create(:first_name=>"Yasmin", :last_name => "Razavi", :remote_avatar_url => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
+user3 = User.create(:first_name=>"Sri", :last_name => "Sri", :remote_avatar_url => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
+user4 = User.create(:first_name=>"Lisa", :last_name => "Smith", :remote_avatar_url => "http://www.thewellingtonplasticsunit.com/images/side2.jpg", :email => "lisa@gmail.com", :password =>"password", :role => "user")
+user5 = User.create(:first_name=>"Bob", :last_name => "Jones", :remote_avatar_url => "http://www.brocku.ca/brock-news/wp-content/uploads/cache/3395_NpAdvHover.jpg", :email => "bob@gmail.com", :password =>"password", :role => "user")
+user6 = User.create(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user")
+user7 = User.create(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user")
 
 
-# Generating two collections per user3
+# Generating two collections per user
 
 col1 = Collection.create(:title => "pens", :description => "My favorite pens", :user_id=>1)
 col2 = Collection.create(:title => "t-shirts", :description => "My favorite t-shirts", :user_id=>1)
@@ -18,6 +22,10 @@ col3 = Collection.create(:title => "sneakers", :description => "My favorite snea
 col4 = Collection.create(:title => "bikes", :description => "awesome bikes", :user_id=>3)
 col5 = Collection.create(:title => "Heels", :description => "freaking high", :user_id=>2)
 col6 = Collection.create(:title => "sunglasses", :description => "shades for the sunny days", :user_id=>2)
+col7 = Collection.create(:title => "surfboards", :description => "Nice surfboards", :user_id=>4)
+col8 = Collection.create(:title => "teapots", :description => "Lovely teapots", :user_id=>4)
+col9 = Collection.create(:title => "bow ties", :description => "My favorite bow-ties", :user_id=>5)
+col10 = Collection.create(:title => "umbrellas", :description => "Amazing umbrellas", :user_id=>5)
 
 # Generating four photos per collection
 #pens
@@ -62,3 +70,37 @@ photo21 = Photo.create(:title=> "Gross and Cutler", :user_id=>2, :collection_id=
 photo22 = Photo.create(:title=> "Karen Walker", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://madisonplus.com/wp-content/uploads/2010/04/sunglasses01.jpg", :caption=> "vintage 89")
 photo23 = Photo.create(:title=> "Prada Flower Sunglasses", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://images2.trendnstylez.com/wp-content/uploads/2013/02/sunglasses-trends-2013-prada-floral-sunglasses.jpg", :caption=> "bought summer 2012")
 photo24 = Photo.create(:title=> "Prada Flower Sunglasses", :user_id=>2, :collection_id=>6, :remote_image_url=>"https://s3.amazonaws.com/assets.svpply.com/large/708696.jpg?1401214165", :caption=> "my dad's")
+
+#teapots
+photo25 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://www.fantes.com/images/120664tea_pots.jpg")
+photo26 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://4.bp.blogspot.com/-oBPzYjoHBp0/TzKU61208rI/AAAAAAAAJGI/IxTP8a46nlM/s1600/Dotty%2BTeapot-600x600.jpg")
+photo27 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://4.bp.blogspot.com/-oVeT2KdWlbw/T2B8XFkp6QI/AAAAAAAAJMI/rAKn1Wx-0Ps/s1600/Racing-Flame-Teapot.jpg")
+photo28 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://www.kristinalogan.com/objects/teapot-blue.jpg")
+photo29 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://www.frontporchgiftshop.com/kitchen/39166.jpg")
+photo30 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>5, :caption=>"Cool teapot", :remote_image_url=>"http://www.velvetcushion.com/files/media/july-teapot-andrew-bannecker.jpg")
+
+
+#bowties
+photo31 = Photo.create(:title=> "Bowtie", :user_id=>5, :collection_id=>6, :caption=>"nice bowtie", :remote_image_url=>"http://www.slaters.co.uk/media/catalog/product/cache/1/image/a4e40ebdc3e371adff845072e1c73f37/i/m/image_65168_1_8114.jpg")
+photo32 = Photo.create(:title=> "Bowtie", :user_id=>5, :collection_id=>6, :caption=>"nice bowtie", :remote_image_url=>"http://cdn.smartturnout.co.uk/media/catalog/product/cache/2/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/h/d/hdbowtie-lrg_2.jpg")
+photo33 = Photo.create(:title=> "Bowtie", :user_id=>5, :collection_id=>6, :caption=>"nice bowtie", :remote_image_url=>"http://images.cdn.bigcartel.com/bigcartel/product_images/127407312/-/Paisley_2_Bow_tie_by_OoOtie_Boston_Bow_ties.jpg")
+photo34 = Photo.create(:title=> "Bowtie", :user_id=>5, :collection_id=>6, :caption=>"nice bowtie", :remote_image_url=>"http://images.cdn.bigcartel.com/bigcartel/product_images/126993069/-/Honey_Badger_Bow_tie_by_OoOtie_Boston_Bow_ties.JPG")
+
+#umbrellas
+
+photo35 = Photo.create(:title=> "Umbrella", :user_id=>5, :collection_id=>7, :caption=>"Gorgeous umbrella", :remote_image_url=>"http://static2.businessinsider.com/image/50d3417e6bb3f70f3600000b/the-moma-sky-umbrella-brightens-any-rainy-day.jpg")
+photo36 = Photo.create(:title=> "Umbrella", :user_id=>5, :collection_id=>7, :caption=>"Gorgeous umbrella", :remote_image_url=>"http://www.kidorable.com/cart/images/T/umb_spacehero_040813.jpg")
+photo37 = Photo.create(:title=> "Umbrella", :user_id=>5, :collection_id=>7, :caption=>"Gorgeous umbrella", :remote_image_url=>"http://blog.beatthebrochure.com/wp-content/uploads/2012/04/a-z-umbrella.jpg")
+photo38 = Photo.create(:title=> "Umbrella", :user_id=>5, :collection_id=>7, :caption=>"Gorgeous umbrella", :remote_image_url=>"http://www.techdigest.tv/assets_c/2009/05/lightsaber-umbrella-thumb-300x257-89200.jpg")
+photo39 = Photo.create(:title=> "Umbrella", :user_id=>5, :collection_id=>7, :caption=>"Gorgeous umbrella", :remote_image_url=>"https://s3.amazonaws.com/assets.svpply.com/large/766570.jpg?1400281072")
+
+#surfboards
+photo41 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://icons.iconarchive.com/icons/visualpharm/vacation/256/surfboard-icon.png")
+photo42 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://d3nevzfk7ii3be.cloudfront.net/igi/PCxpNTLAvxG6hATf")
+photo43 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://www.shopgsd.com/images/products/large/137.jpg")
+photo44 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://jellyflash.com/images/uploads/SurfBoard/QuikSilver/Quiksilver_Cypher_Alpha_Surfboard_USB_Flash_Memory_Drive.jpg")
+photo45 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://www.ronjonsurfshop.com/assets/item/large/10670030004--ronjon_6_4_rocket_fish_surfboard.jpg")
+photo46 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://props-now.com/test-newwebsite/tokyo/wp-content/uploads/2012/01/P-122146.jpg")
+photo47 = Photo.create(:title=> "Surfboard", :user_id=>4, :collection_id=>4, :caption=>"Nice surfboard", :remote_image_url=>"http://static.iwantmoretoys.com/images/products/totally-bamboo-surfboard-cutting-board.jpg")
+
+

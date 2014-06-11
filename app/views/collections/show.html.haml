@@ -1,4 +1,14 @@
 %p#notice= notice
+
+ 
+
+.heading
+  %h1   
+    = @collection.title
+    = image_tag @collection.user.avatar.url, :class => "thumbnailimage"
+
+
+
 %ul#grid
   - @collection.photos.each do |photo|
     %li.photo-container{"data-id" => photo.id}
@@ -6,8 +16,7 @@
 
 
 / %p
-/   %b Title:
-/   = @collection.title
+/   
 / %p
 /   %b Description:
 /   = @collection.description

@@ -8,7 +8,7 @@ loadCommentsForPhoto = (id) ->
       $(data).each((index, comment) ->
           html = "<div class='users'>
             <h2>#{comment.user.name}</h2>
-            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar}>
+            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar.url}>
             <p class='user_comment'>#{comment.text}</p>
             </div>"
           console.log($(this))
@@ -28,7 +28,7 @@ loadcontentsForPhoto = (id) ->
     success: (data, textStatus, jqXHR) -> 
 
       html = "<div class='photoContent'>
-              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
+              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar.url}>
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>

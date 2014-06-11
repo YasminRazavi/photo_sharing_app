@@ -4,8 +4,8 @@
       = current_user.first_name
 
   %p
-    .avatar
-      = image_tag current_user.avatar, :class => "userimage"
+    .profile_avatar
+      = image_tag current_user.avatar.url, :class => "userimage"
 
   %p
     .bio
