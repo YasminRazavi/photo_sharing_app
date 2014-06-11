@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title PhotoApp
+    / %title PhotoApp
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -16,18 +16,29 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to image_tag( 'https://s3.amazonaws.com/uploads.hipchat.com/39979/788210/RinUMBtuUzObQtK/logo_740946_web%20%281%29.jpg'), root_path
+          = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path
         %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
           %ul.nav.navbar-nav
             %li
-              = link_to 'Home', root_path, :class => "nav navbar-nav"
-            %li
-              = link_to 'Users', users_path, :class => "nav navbar-nav"
+              = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
+                %button.btn.btn-success.btn-lg
+                  %span.glyphicon.glyphicon-user 
             - if user_signed_in?
               %li
-                = link_to 'Profile', profile_path, :class => "nav navbar-nav"
+                = link_to profile_path, :class => "nav navbar-nav" do
+                  #pic
+                    = image_tag(current_user.avatar)
               %li
-                = link_to 'Upload Photo',new_photo_path, :class => "nav navbar-nav"
+
+                = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
+                  %button.btn.btn-success.btn-lg
+                    %span.glyphicon.glyphicon-circle-arrow-up
+
+              %li
+                = search_form_for @q, url: search_path  do |f|
+                  = f.search_field :title_or_caption_cont, placeholder: "search..."
+                  = f.submit
+
           %ul.nav.navbar-nav.navbar-right
             - if !user_signed_in?
               %li
@@ -39,5 +50,6 @@
                 = link_to 'Logout', destroy_user_session_path, method: :delete
     #main
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        #flashNav
+          = content_tag :div, msg, :id => "flash_#{name}"
       = yield
