@@ -47,7 +47,9 @@ gem "acts_as_follower"
 
 gem 'will_paginate', '~> 3.0'
 
-gem 'html2haml'
+
+
+gem 'bootstrap-glyphicons'
 
 group :development, :test do
   gem 'pry-rails'

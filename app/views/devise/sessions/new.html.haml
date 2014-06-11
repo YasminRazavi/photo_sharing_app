@@ -1,7 +1,7 @@
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .container
     %form.form-signin
-      %h2.form-signin-heading Sign in
+      %h2.form-signin-heading Log in
       .inputFields
         = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email Address"
       .inputFields
@@ -10,9 +10,9 @@
       %div
         = f.check_box :remember_me
         = f.label :remember_me
-    %div= f.submit "Sign in", :class => "btn btn-large btn-primary"
-
-= render "devise/shared/links"
+    %div= f.submit "Log in", :class => "btn btn-large btn-primary"
+    %br
+    = render "devise/shared/links"
 
 / / Latest compiled and minified CSS
 / %link{href: "//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel: "stylesheet"}/
