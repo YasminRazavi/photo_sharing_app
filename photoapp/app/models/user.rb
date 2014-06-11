@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   has_many :collections
   has_many :photos
   has_many :comments
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
+
+  before_create :set_default_role
+
+  private
+  def set_default_role
+    self.role ||= 'user'
+  end
 end

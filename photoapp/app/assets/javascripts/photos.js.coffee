@@ -19,28 +19,41 @@ loadCommentsForPhoto = (id) ->
     $("#grid li.zoomed .commentsection").prepend(html_commentbox)
 
 
+loadcontentsForPhoto = (id) ->
+  url = "/photos/#{id}"
+  $("#grid li.zoomed").prepend("<div class='photo-descp'></div><div class='photo-tags'></div>")
+  $.ajax url,
+    type: 'GET'
+    dataType: 'json'
+    success: (data, textStatus, jqXHR) -> 
+
+      html = "<div class='photoContent'>
+              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
+              <h2>#{data.user.name}</h2><br><br>
+              <h3 class='picText'>#{data.title}</h3><br><br>
+              <p class='picText'>#{data.caption}</p><br><br>
+              <p class='picText'>Likes: #{data.likes}</p><br><br>
+              </div>"
+      $("#grid li.zoomed .photo-descp").append(html)
+      $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
+      $(data.tags).each((index, tag) ->
+        html_tags = "<p><a href='/tagged?tag=#{tag.name}'>#{tag.name}</a></p>"
+
+        $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
 
 enlargePhoto = -> 
   id = $(this).attr('data-id')
   $("#grid li").hide()
-  $(this).find("img").css({width: "400px"})
-  $(this).removeClass("photo-container").addClass("zoomed").css({position: "initial"}).show()
-
-
-  
+  $(this).find("img").css({width: "500px", border: "2px solid  lightgrey"})
+  $(this).removeClass("photo-container").addClass("zoomed").css({position: "initial"}).show() 
   loadCommentsForPhoto(id)
+  loadcontentsForPhoto(id)
 
 submitComment = ->
   $.ajax "/comments",
     type: 'POST'
     data: {comment:{text:$("#addComment").val(),
     photo_id: $(this).data("id") }}
-
-  displayComments = (comments)->
-    console.log "comments", comments
-
-  $.ajax '/photos',
-    type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) ->
       console.log(data)
@@ -49,7 +62,6 @@ submitComment = ->
             <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
             <p class='user_comment'>#{data.text}</p>
             </div>"
-      alert(html)
       $(".newComment").after(html)
 
   $("#addComment").val("")
@@ -85,4 +97,23 @@ $ ->
   
   
   
-              
+  
+
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+ 

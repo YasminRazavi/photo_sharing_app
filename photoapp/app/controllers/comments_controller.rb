@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
+  before_filter :authenticate_user!
   def index
     @comments = if params[:photo_id]
        Photo.find(params[:photo_id]).comments
