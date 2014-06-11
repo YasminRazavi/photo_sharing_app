@@ -5,10 +5,10 @@ class Ability
     user ||= User.new
     if user.role == :admin
       can :manage, :all
-    elsif user.role == :user
+    elsif user.role == "user"
       can :read, :all  
       can :create, [Comment, Photo, Collection]  
-      can [:update, :destroy], Photo do |photo|  
+      can [:update, :destroy], Photo do |photo|
         photo.try(:user) == user
       end
       can [:update, :destroy], Collection do |collection|  
