@@ -2,30 +2,19 @@
   = devise_error_messages!
   .container
     %form.form-signin
-      %h2.form-signin-heading Sign in
-      %div
-        = f.label :first_name 
-        %br/
-        = f.text_field :first_name
-      %div
-        = f.label :last_name 
-        %br/
-        = f.text_field :last_name
-      %div
-        = f.label :avatar 
-        %br/
-        = f.text_field :avatar
-      %div
-        = f.label :email
-        %br/
-        = f.email_field :email, autofocus: true
-      %div
-        = f.label :password
-        %br/
-        = f.password_field :password, autocomplete: "off"
-      %div
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation, autocomplete: "off"
+      %h2.form-signin-heading Sign up
+      %div.inputFields
+        = f.text_field :first_name, :class => "form-control", :placeholder => "First Name"
+      %div.inputFields
+        = f.text_field :last_name, :class => "form-control", :placeholder => "Last Name"
+      %div.inputFields
+        = f.text_field :avatar, :class => "form-control", :placeholder => "Avatar"
+      %div.inputFields
+        = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email"
+      %div.inputFields
+        = f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password"
+      %div.inputFields
+        = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password Confirmation"
       %div= f.submit "Sign up", :class => "btn btn-large btn-primary"
-= render "devise/shared/links"
+      %br/
+      = render "devise/shared/links"

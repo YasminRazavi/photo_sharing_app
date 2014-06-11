@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require_tree .
+
+$(document).ready(function(){
+  $('#flashNav').delay(2000).slideUp(1000);
+});
