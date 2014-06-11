@@ -34,7 +34,7 @@ class PhotosController < ApplicationController
   # GET /photos/new.json
   def new
     @photo = Photo.new
-
+    authorize! :new, @photo
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @photo }
@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
   # POST /photos.json
   def create
     @photo = Photo.new(params[:photo])
-
+    authorize! :create, @photo
     respond_to do |format|
       if @photo.save
         format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
@@ -67,7 +67,7 @@ class PhotosController < ApplicationController
   # PUT /photos/1.json
   def update
     @photo = Photo.find(params[:id])
-
+    authorize! :update, @photo
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
         format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
@@ -84,7 +84,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
-
+    authorize! :destroy, @photo
     respond_to do |format|
       format.html { redirect_to photos_url }
       format.json { head :no_content }
