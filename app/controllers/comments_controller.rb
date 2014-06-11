@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   # GET /comments.json
   before_filter :authenticate_user!
   def index
+
     @comments = if params[:photo_id]
        Photo.find(params[:photo_id]).comments
     else
@@ -17,6 +18,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+
     @comment = Comment.find(params[:id])
 
     respond_to do |format|
@@ -29,7 +31,7 @@ class CommentsController < ApplicationController
   # GET /comments/new.json
   def new
     @comment = Comment.new
-
+    authorize! :new, @comment
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @comment }
@@ -39,6 +41,7 @@ class CommentsController < ApplicationController
   # GET /comments/1/edit
   def edit
     @comment = Comment.find(params[:id])
+    authorize! :edit, @comment
   end
 
   # POST /comments
@@ -46,7 +49,7 @@ class CommentsController < ApplicationController
   def create
     params[:comment][:user_id] = current_user.id
     @comment = Comment.new(params[:comment])
-
+    authorize! :create, @comment
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
@@ -62,7 +65,7 @@ class CommentsController < ApplicationController
   # PUT /comments/1.json
   def update
     @comment = Comment.find(params[:id])
-
+    authorize! :update, @comment
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
@@ -79,7 +82,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
+    authorize! :destroy, @comment
     respond_to do |format|
       format.html { redirect_to comments_url }
       format.json { head :no_content }

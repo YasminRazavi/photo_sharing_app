@@ -23,6 +23,7 @@ class CollectionsController < ApplicationController
   # GET /collections/1
   # GET /collections/1.json
   def show
+
     @collection = Collection.find(params[:id])
 
     respond_to do |format|
@@ -35,7 +36,7 @@ class CollectionsController < ApplicationController
   # GET /collections/new.json
   def new
     @collection = Collection.new
-
+    authorize! :new, @collection
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @collection }
@@ -45,13 +46,14 @@ class CollectionsController < ApplicationController
   # GET /collections/1/edit
   def edit
     @collection = Collection.find(params[:id])
+    authorize! :edit, @collection
   end
 
   # POST /collections
   # POST /collections.json
   def create
     @collection = Collection.new(params[:collection])
-
+    authorize! :create, @collection
     respond_to do |format|
       if @collection.save
         format.html { redirect_to @collection, notice: 'Collection was successfully created.' }
@@ -67,7 +69,7 @@ class CollectionsController < ApplicationController
   # PUT /collections/1.json
   def update
     @collection = Collection.find(params[:id])
-
+    authorize! :update, @collection
     respond_to do |format|
       if @collection.update_attributes(params[:collection])
         format.html { redirect_to @collection, notice: 'Collection was successfully updated.' }
@@ -84,7 +86,7 @@ class CollectionsController < ApplicationController
   def destroy
     @collection = Collection.find(params[:id])
     @collection.destroy
-
+    authorize! :destroy, @collection
     respond_to do |format|
       format.html { redirect_to collections_url }
       format.json { head :no_content }
