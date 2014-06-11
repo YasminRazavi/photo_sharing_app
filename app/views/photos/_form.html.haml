@@ -23,10 +23,6 @@
     = f.collection_select :collection_id, Collection.all, :id, :title
   .field
     = f.label :image
-    = f.text_area :image
-
-  .field
-    = f.label :image
     = f.file_field :image
   .actions
     = f.submit 'Save'

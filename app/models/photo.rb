@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :caption, :image, :title, :collection_id, :user_id, :tag_list
+  attr_accessible :caption, :image, :title, :collection_id, :user_id, :tag_list, :remote_image_url
   belongs_to :user, :class_name=> "User", :foreign_key => "user_id"
   belongs_to :collection, :class_name=> "Collection", :foreign_key => "collection_id"
   has_many :comments
@@ -19,7 +19,7 @@ class Photo < ActiveRecord::Base
       collection_id: collection_id,
       user_id: user_id,
       title: title,
-      image: image, 
+      image: image.url, 
       tags: tags,
       user: {
         name: user.first_name,
