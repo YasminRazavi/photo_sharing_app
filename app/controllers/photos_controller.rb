@@ -6,17 +6,34 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    
     @photos = if params[:id].present?
       Collection.find(params[:id]).photos.order("created_at DESC").limit(4)
     else
       Photo.all
     end
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @photos }
     end
+  end
+
+  # def search
+  #   index
+  #   render :index
+  # end
+
+  def search_results
+
+    # q = params[:q]
+    # @photos= Photo.search(title_cont: q).result
+    tag =  params[:q].values.first
+    puts(tag)
+    @photos= @q.result(distinct: true)
+    @photos << Photo.tagged_with(tag).flatten
+    @photos.uniq!
+    # @photos = Photo.where("title LIKE ?", "%#{params[:q]}%") \
+    # | Photo.tagged_with("%#{params[:q]}%")
+    render json: @photos
   end
 
   # GET /photos/1

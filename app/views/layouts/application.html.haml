@@ -28,6 +28,10 @@
                 = link_to 'Profile', profile_path, :class => "nav navbar-nav"
               %li
                 = link_to 'Upload Photo',new_photo_path, :class => "nav navbar-nav"
+              %li
+                = search_form_for @q, url: search_path  do |f|
+                  = f.search_field :title_or_caption_cont, placeholder: "search..."
+                  = f.submit
           %ul.nav.navbar-nav.navbar-right
             - if !user_signed_in?
               %li

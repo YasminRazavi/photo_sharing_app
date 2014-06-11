@@ -90,6 +90,10 @@ showAllPhotos = (e) ->
           itemWidth: 210
 
         })
+
+
+# SEARCH SECTION
+
     
 $ ->
   $(document).on "click", "li.photo-container", enlargePhoto

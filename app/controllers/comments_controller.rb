@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   # GET /comments.json
   before_filter :authenticate_user!
   def index
+
     @comments = if params[:photo_id]
        Photo.find(params[:photo_id]).comments
     else
@@ -17,6 +18,7 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+
     @comment = Comment.find(params[:id])
 
     respond_to do |format|

@@ -35,6 +35,7 @@ Photoapp::Application.routes.draw do
     match 'users/:id' => 'users#show', via: :get
   end
 
+  match "search", to: "photos#search_results", via: [:get, :post], as: :search
 
   
 end
