@@ -5,14 +5,13 @@ Collection.delete_all
 
 #Generating users
 
-user1 = User.create(:first_name=>"Sarah", :last_name => "Knight", :remote_avatar_url => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user")
+user1 = User.create(:first_name=>"Sarah", :last_name => "Knight", :remote_avatar_url => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user", :bio => "I'm from Oxford, and I love t-shirts and pens.")
 user2 = User.create(:first_name=>"Yasmin", :last_name => "Razavi", :remote_avatar_url => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
 user3 = User.create(:first_name=>"Sri", :last_name => "Mohan", :remote_avatar_url => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
 user4 = User.create(:first_name=>"Lisa", :last_name => "Smith", :remote_avatar_url => "http://www.thewellingtonplasticsunit.com/images/side2.jpg", :email => "lisa@gmail.com", :password =>"password", :role => "user")
-
 user5 = User.create(:first_name=>"Bob", :last_name => "Jones", :remote_avatar_url => "http://www.brocku.ca/brock-news/wp-content/uploads/cache/3395_NpAdvHover.jpg", :email => "bob@gmail.com", :password =>"password", :role => "user")
-user6 = User.create(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user")
-user7 = User.create(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user")
+user6 = User.create(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user", :bio => "I really just love collecting stuff.")
+user7 = User.create(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user", :bio => "My passion is sharing photos.")
 
 
 # Generating two collections per user
@@ -27,6 +26,7 @@ col7 = Collection.create(:title => "teapots", :description => "Lovely teapots", 
 col8 = Collection.create(:title => "bow ties", :description => "My favorite bow-ties", :user_id=>5)
 col9 = Collection.create(:title => "umbrellas", :description => "Amazing umbrellas", :user_id=>5)
 col10 = Collection.create(:title => "surfboards", :description => "Nice surfboards", :user_id=>6)
+col11 = Collection.create(:title => "shells", :description => "Beautiful shells", :user_id=>6)
 
 # Generating four photos per collection
 #pens
@@ -39,7 +39,7 @@ photo4 = Photo.create(:title=> "green pen", :user_id=>1, :collection_id=>1, :cap
 
 #t-shirts
 photo5 = Photo.create(:title=> "smiley tshirt", :user_id=>1, :collection_id=>2, :caption=>"mom bought this pour moi when I was 5", :remote_image_url=>"http://www.articlesweb.org/blog/wp-content/gallery/fun-shirts-a-new-dressing-tradition-among-youngsters/fun-shirts-a-new-dressing-tradition-among-youngsters-4.jpg")
-photo6 = Photo.create(:title=> "upset t-shirt", :user_id=>1, :collection_id=>2, :caption=>"i lost a running competition", :remote_image_url=>"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS5WLLVgPSac_Nz-e9pBAi7v1FFb-rLJunGAfnZrmAFPH9iY9h2nQL7xrQ")
+photo6 = Photo.create(:title=> "great t-shirt", :user_id=>1, :collection_id=>2, :caption=>"Tres bon", :remote_image_url=>"http://creatiwittyblog.com/wp-content/uploads/2012/09/t-shirt-designs-inpiration-25.jpg")
 photo7 = Photo.create(:title=> "Comme de garcon", :user_id=>1, :collection_id=>2, :remote_image_url=>"http://www.monsieurjerome.com/wp-content/uploads/2012/08/a-bathing-ape-x-play-comme-des-garcons-2012-capsule-collection-4.jpg")
 photo8 = Photo.create(:title=> "cool t", :user_id=>1, :collection_id=>2, :caption=>"KWEL", :remote_image_url=>"http://www.songhi.com/wp-content/uploads/2014/02/staycool.jpg")
 
@@ -101,7 +101,18 @@ photo42 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :c
 photo43 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://www.shopgsd.com/images/products/large/137.jpg")
 photo44 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://jellyflash.com/images/uploads/SurfBoard/QuikSilver/Quiksilver_Cypher_Alpha_Surfboard_USB_Flash_Memory_Drive.jpg")
 photo45 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://www.ronjonsurfshop.com/assets/item/large/10670030004--ronjon_6_4_rocket_fish_surfboard.jpg")
-photo46 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://props-now.com/test-newwebsite/tokyo/wp-content/uploads/2012/01/P-122146.jpg")
+photo46 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://www.laweekly.com/imager/b/blog/4202672/5fa8/Timmy_Patterson_Surfboard_Rising_Sun.jpg?cb=1390201303")
 photo47 = Photo.create(:title=> "Surfboard", :user_id=>6, :collection_id=>10, :caption=>"Nice surfboard", :remote_image_url=>"http://static.iwantmoretoys.com/images/products/totally-bamboo-surfboard-cutting-board.jpg")
+
+#shells
+photo48 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shells", :remote_image_url=>"http://i.huffpost.com/gadgets/slideshows/5871/slide_5871_79165_large.jpg")
+photo49 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://andwithyourspirit.files.wordpress.com/2014/05/shells-026.jpg")
+photo50 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://www.gurusfeet.com/files/blogpics/shells%20020.JPG")
+photo51 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://www.thephotoargus.com/wp-content/uploads/2011/09/seashells03.jpg")
+photo52 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://4.bp.blogspot.com/-4JD7S5LUQRY/Uawm__wixLI/AAAAAAAAALQ/77ash8evMjw/s1600/blue+shells.jpg")
+photo53 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://img.xcitefun.net/users/2010/05/171039,xcitefun-shell19.jpg")
+photo54 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://images.forwallpaper.com/files/thumbs/preview/25/251459__photo-macro-landscapes-beaches-beautiful-wallpaper-sand-shells-shell-shell-shells-sun_p.jpg")
+
+
 
 
