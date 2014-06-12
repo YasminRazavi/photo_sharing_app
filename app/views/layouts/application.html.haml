@@ -16,6 +16,9 @@
           %span.icon-bar
           %span.icon-bar
         = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path, :class => "myLogo"
+        = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
+          %button.btn.btn-success.btn-lg
+            %span.glyphicon.glyphicon-user 
       %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
         %ul.nav.navbar-nav
           %li
