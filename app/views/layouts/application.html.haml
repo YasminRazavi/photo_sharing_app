@@ -40,11 +40,11 @@
           - if !user_signed_in?
             %li.navbar-right
               = link_to new_user_registration_path, :id => "sri" do
-                %button.btn.btn-info.btn-lg 
+                %button.btn.btn-success.btn-lg 
                   %span Sign Up
             %li.navbar-right
               = link_to new_user_session_path, :id => "sri" do
-                %button.btn.btn-info.btn-lg
+                %button.btn.btn-success.btn-lg
                   %span Login
           - else
             %li.navbar-right

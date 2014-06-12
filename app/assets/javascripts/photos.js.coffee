@@ -117,17 +117,14 @@ showAllPhotos = (e) ->
 
     $('.ajaxloader').show()
 
-    # TODO: consider avoding request for all photos when clicking .back-to-list
-    # perhaps makes more sense to just popup box over existing photos, rather than
-    # reloading them all
-
     $("#grid").empty()
     $.ajax "/photos#index",
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
+        console.log("data unsorted", data)
         data = _.sortBy(data, "likes").reverse()
-        console.log(data)
+        console.log("data sorted", data)
         
         displayPhoto(data)
         wookifyPhotos()
