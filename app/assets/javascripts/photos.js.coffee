@@ -99,7 +99,6 @@ displayPhoto = (photosArray) ->
       num += 1
       console.log num, photosArray.length, num == photosArray.length
       if num == photosArray.length
-
         $('#grid li').wookmark({
           align: 'center',
           autoResize: false, 
@@ -122,12 +121,9 @@ showAllPhotos = (e) ->
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
-        console.log("data unsorted", data)
-        data = _.sortBy(data, "likes").reverse()
-        console.log("data sorted", data)
-        
+        data = _.sortBy(data, "likes").reverse()        
         displayPhoto(data)
-        wookifyPhotos()
+        
 
 
 wookifyPhotos = ->
