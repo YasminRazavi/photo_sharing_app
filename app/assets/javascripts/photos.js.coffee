@@ -73,8 +73,41 @@ displayPhoto = (photosArray) ->
     $('#grid').append("<li class='photo-container' data-id=#{photo.id}><img data-id=#{photo.id} class=homephotos src=#{photo.image} width=200></li>")
 
 showAllPhotos = (e) ->
+  # pusedo code
+  # if grid choosen is the search grid, then if $('.search') 
+  # settings = serch grid
+    #  else 
+    #   settings = show grid 
+
+    # do everything else as normal   
+
+    # #settings - normal show page 
+    # var url = '/photos';
+    # var grid = "#grid";
+
+    # #settings - search results page 
+    # '/search?utf8=%E2%9C%93&q%5Btitle_or_caption_cont%5D=%QUERY'
+
+
+    # var url = '/photos#search_results';
+    # var grid = "#grid";
+    # url;
+    # if $("#grid").hasClass('search');
+    #   url = '/photos#search_results';
+    # else
+    #   url = '/photos#index';
+
+    # var context = context
+
+    # if context == 'search'
+
+    if $("#grid").hasClass("search")
+      url = "/photos#search_results"
+    else
+      url = "/photos#index"
+    
     $("#grid").empty()
-    $.ajax '/photos',
+    $.ajax url,
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->

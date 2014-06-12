@@ -20,9 +20,9 @@ $(document).ready(function(){
 
   $('#typeaheadBar').typeahead([
     {
-      name: 'planets',
-      remote: 'http://jsonip.com/'
-
+      name: 'mysearch',
+      displayKey: 'title',
+      remote: '/search?utf8=%E2%9C%93&q%5Btitle_or_caption_cont%5D=%QUERY'
     }
   ]);
 

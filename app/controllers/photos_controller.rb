@@ -28,14 +28,17 @@ class PhotosController < ApplicationController
     # @photos= Photo.search(title_cont: q).result
     tag =  params[:q].values.first
     puts(tag)
-    @photos= @q.result(distinct: true)
-    @photos << Photo.tagged_with(tag).flatten
+    @photos= @q.result(distinct: true).to_a
+    @photos += Photo.tagged_with(tag).flatten
     @photos.uniq!
-    # @photos = Photo.where("title LIKE ?", "%#{params[:q]}%") \
-    # | Photo.tagged_with("%#{params[:q]}%")
-    
 
-  end
+    respond_to do |format|
+      format.html 
+      format.json { render json: @photos }
+    end
+
+    raise
+ end
 
   # GET /photos/1
   # GET /photos/1.json
