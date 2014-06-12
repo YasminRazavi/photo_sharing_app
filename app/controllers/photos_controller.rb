@@ -28,7 +28,11 @@ class PhotosController < ApplicationController
     else
       @photo.liked_by current_user
     end
-    render :show 
+    liked_status = current_user.liked? @photo
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: @photo.as_json(liked_status) }
+    end
   end
   
   def search_results
@@ -123,12 +127,17 @@ class PhotosController < ApplicationController
     end  
   end
 
-  def vote 
-    current_user
-    puts "#{current_user.first_name} liked me!!"
-    @photo = Photo.find(params[:id])
-    @photo.liked_by current_user
-    redirect_to photos_path
-  end
+  # def vote 
+  #   current_user
+  #   puts "#{current_user.first_name} liked me!!"
+  #   @photo = Photo.find(params[:id])
+  #   @photo.liked_by current_user
+  #   liked_status = current_user.liked? @photo
+  #   # redirect_to photo_path(@photo)
+  #   respond_to do |format|
+  #     # format.html # show.html.erb
+  #     format.json { render json: @photo.as_json(liked_status) }
+  #   end
+  # end
 
 end

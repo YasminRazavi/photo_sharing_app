@@ -35,7 +35,7 @@ loadcontentsForPhoto = (id) ->
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>
-              <p class='picText'>Likes: #{data.likes}</p><br><br>" +like_tag+
+              <p class='picLikes'>Likes: #{data.likes}</p><br><br>" +like_tag+
               "</div>"
       $("#grid li.zoomed .photo-descp").append(html)
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
@@ -44,13 +44,6 @@ loadcontentsForPhoto = (id) ->
 
         $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
 
-# toggleLike = (data, id) ->
-#   console.log(data)
-#   if data.liked_status 
-#     like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
-#   else
-#     like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
-#   $("#grid li.zoomed .photo-descp").append(like_tag)
 
 updateLike = ->
   id = $(this).data("id")
@@ -64,7 +57,8 @@ updateLike = ->
     data: {photo_id: id }
     dataType: 'json'
     success: (data, textStatus, jqXHR) ->
-
+      console.log(data)
+      $('.picLikes').html("Likes: "+data.likes)
 enlargePhoto = -> 
   id = $(this).attr('data-id')
   $("#grid li").hide()
@@ -93,17 +87,16 @@ submitComment = ->
   $("#addComment").val("")
 
 displayPhoto = (photosArray) ->
-  _(photosArray).each (photo) -> 
-    $('#grid').append("<li class='photo-container' data-id=#{photo.id}><img data-id=#{photo.id} class=homephotos src=#{photo.image} width=200></li>")
-
-showAllPhotos = (e) ->
-    $("#grid").empty()
-    $.ajax '/photos',
-      type: 'GET'
-      dataType: 'json'
-      success: (data, textStatus, jqXHR) ->
-        console.log(data)
-        displayPhoto(data)
+  num = 0
+  _(photosArray).each (photo, i, photosArray) -> 
+    img = new Image()
+    img.onload = ->
+      $('#grid').append("<li class='photo-container' data-id=#{photo.id}>
+        <img data-id=#{photo.id} class=homephotos src=#{photo.image} width=200 >
+      </li>")
+      num += 1
+      console.log num, photosArray.length, num == photosArray.length
+      if num == photosArray.length
 
         $('#grid li').wookmark({
           align: 'center',
@@ -112,17 +105,30 @@ showAllPhotos = (e) ->
           offset: 5, 
           flexibleWidth: 0
           itemWidth: 210
-
         })
+    img.src = photo.image;
+    # $('.ajaxloader').hide()
+    
+
+
+showAllPhotos = (e) ->
+    $('.ajaxloader').show()
+    $("#grid").empty()
+    $.ajax '/photos',
+      type: 'GET'
+      dataType: 'json'
+      success: (data, textStatus, jqXHR) ->
+        data = _.sortBy(data, "likes").reverse()
+        console.log(data)
+        
+        displayPhoto(data)
+
+        
+    
+        
+     
 
 showCollectionPhotos = (e) ->
-    # $("#grid").empty()
-    # $.ajax "#{document.location.href}/photos",
-    #   type: 'GET'
-    #   dataType: 'json'
-    #   success: (data, textStatus, jqXHR) ->
-    #     console.log(data)
-    #     displayPhoto(data)
 
         $('#grid li').wookmark({
           align: 'center',
@@ -149,7 +155,7 @@ $ ->
   else if document.location.pathname == "/" || document.location.pathname == "/photos"
     showAllPhotos()
   
-  
+
   
   
 
