@@ -53,6 +53,7 @@ class CollectionsController < ApplicationController
   # POST /collections.json
   def create
     @collection = Collection.new(params[:collection])
+    @collection.user = current_user
     authorize! :create, @collection
     respond_to do |format|
       if @collection.save

@@ -16,11 +16,8 @@
     = f.label :tag_list, "Tags (separated by commas)"
     = f.text_field :tag_list
   .field
-    = f.label :user_id
-    = f.text_field :user_id
-  .field
     = f.label :collection_id
-    = f.collection_select :collection_id, Collection.all, :id, :title
+    = f.collection_select :collection_id, current_user.collections, :id, :title
   .field
     = f.label :image
     = f.file_field :image
