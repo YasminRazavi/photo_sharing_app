@@ -97,7 +97,9 @@ display: inline;
   margin-top: 1px;
 
   h2 {
-    font-size: 20px
+    font-size: 20px;
+    font-family: "Trebuchet MS";
+
   }
 
   p {
@@ -131,6 +133,19 @@ display: inline;
   }
   
 }
+
+.heading {
+
+  h1 {
+
+    text-align: center;
+    padding-top: 10px;
+    color: darkgrey;
+    font-family: "Trebuchet MS";
+  }
+}
+
+
 
 /*
 .homephotos {

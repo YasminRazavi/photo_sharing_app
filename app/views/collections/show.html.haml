@@ -1,15 +1,31 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @collection.title
-%p
-  %b Description:
-  = @collection.description
-%p
-  %b User:
-  = @collection.user
+ 
 
-= link_to 'Edit', edit_collection_path(@collection)
-\|
-= link_to 'Back', collections_path
+.heading
+  %h1   
+    = @collection.title
+    = image_tag @collection.user.avatar.url, :class => "thumbnailimage"
+
+
+
+%ul#grid
+  - @collection.photos.each do |photo|
+    %li.photo-container{"data-id" => photo.id}
+      %img.homephotos{"data-id" => photo.id, :src => photo.image, :width => 200}
+
+
+/ %p
+/   
+/ %p
+/   %b Description:
+/   = @collection.description
+/ %p
+/   %b User:
+/   = @collection.user
+
+/ = link_to 'Edit', edit_collection_path(@collection)
+/ \|
+/ = link_to 'Back', collections_path
+
+

@@ -10,7 +10,7 @@ class Comment < ActiveRecord::Base
       user_id: user_id,
       user:{
         name:user.first_name ,
-        avatar: user.avatar  
+        avatar: user.avatar.url
       }
     }
   end

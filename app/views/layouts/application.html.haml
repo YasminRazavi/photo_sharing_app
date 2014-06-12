@@ -27,7 +27,7 @@
               %li
                 = link_to profile_path, :class => "nav navbar-nav" do
                   #pic
-                    = image_tag(current_user.avatar)
+                    = image_tag(current_user.avatar.url)
               %li
                 = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
                   %button.btn.btn-success.btn-lg

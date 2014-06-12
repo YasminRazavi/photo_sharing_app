@@ -1,17 +1,16 @@
 #my_profile
-  %h1 
-    = current_user.first_name
+  .profile_name
+    %h1 
+      = current_user.first_name
 
   %p
-    .avatar
-      = image_tag current_user.avatar, :class => "userimage"
+    .profile_avatar
+      = image_tag current_user.avatar.url, :class => "userimage"
 
-  %p
+  %h4
     .bio
-      %b Bio:
       = current_user.bio
 
   %div.collections_container
-    %b Collections:
-    %br
+    
     

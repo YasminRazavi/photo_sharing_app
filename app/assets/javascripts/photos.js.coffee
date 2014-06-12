@@ -8,7 +8,7 @@ loadCommentsForPhoto = (id) ->
       $(data).each((index, comment) ->
           html = "<div class='users'>
             <h2>#{comment.user.name}</h2>
-            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar}>
+            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar.url}>
             <p class='user_comment'>#{comment.text}</p>
             </div>"
           console.log($(this))
@@ -26,20 +26,44 @@ loadcontentsForPhoto = (id) ->
     type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
-
+      if data.liked_status 
+        like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
+      else
+        like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
       html = "<div class='photoContent'>
-              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
+              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar.url}>
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>
-              <p class='picText'>Likes: #{data.likes}</p><br><br>
-              </div>"
+              <p class='picText'>Likes: #{data.likes}</p><br><br>" +like_tag+
+              "</div>"
       $("#grid li.zoomed .photo-descp").append(html)
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
       $(data.tags).each((index, tag) ->
         html_tags = "<p><a href='/tagged?tag=#{tag.name}'>#{tag.name}</a></p>"
 
         $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
+
+# toggleLike = (data, id) ->
+#   console.log(data)
+#   if data.liked_status 
+#     like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
+#   else
+#     like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
+#   $("#grid li.zoomed .photo-descp").append(like_tag)
+
+updateLike = ->
+  id = $(this).data("id")
+  if $(this).attr("class") == "fullheart"
+    like_tag = "<img  id='heart' class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px></img>"
+  else
+    like_tag = "<img  id='heart' class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px></img>"
+  $(this).replaceWith(like_tag)
+  $.ajax "/photos/like",
+    type: 'POST'
+    data: {photo_id: id }
+    dataType: 'json'
+    success: (data, textStatus, jqXHR) ->
 
 enlargePhoto = -> 
   id = $(this).attr('data-id')
@@ -124,15 +148,39 @@ showAllPhotos = (e) ->
 
         })
 
+showCollectionPhotos = (e) ->
+    # $("#grid").empty()
+    # $.ajax "#{document.location.href}/photos",
+    #   type: 'GET'
+    #   dataType: 'json'
+    #   success: (data, textStatus, jqXHR) ->
+    #     console.log(data)
+    #     displayPhoto(data)
 
-# SEARCH SECTION
+        $('#grid li').wookmark({
+          align: 'center',
+          autoResize: false, 
+          container: $('#grid'), 
+          offset: 5, 
+          flexibleWidth: 0
+          itemWidth: 210
+
+        })      
+
+
 
     
 $ ->
   $(document).on "click", "li.photo-container", enlargePhoto
   $(document).on "click", ".submitcomment", submitComment
   $(document).on 'click', ".back-to-list", showAllPhotos
-  showAllPhotos()
+  $(document).on 'click', ".emptyheart", updateLike
+  $(document).on 'click', ".fullheart", updateLike
+
+  if document.location.pathname.match /collections\/\d+/
+    showCollectionPhotos()
+  else if document.location.pathname == "/" || document.location.pathname == "/photos"
+    showAllPhotos()
   
   
   
