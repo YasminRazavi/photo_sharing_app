@@ -1,8 +1,10 @@
 // Place all the styles related to the collections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$photo-width: 135px;
+
 .col_cont {
-  width: 40%;
+  width: (($photo-width + 15px) * 2) + 62px;
 
   background-color: white;
   display: inline;
@@ -16,17 +18,30 @@
   border-radius: 5px;
 }
 
-.col_photo_thumb {
-  width: 180px;
+.photo_frame {
+  width: $photo-width + 15px;
   height: 180px;
-  width: 45%;
   float: left;
   margin: auto;
   border: 1px solid #dedede;
   -moz-border-radius: 2px;
   -webkit-border-radius: 2px;
   border-radius: 2px;
-  padding: 4px;
+  padding: 4px;  
+  text-align: center;
+
+}
+
+.col_photo_thumb {
+  max-width: $photo-width;
+  max-height: 165px;
+  // float: left;
+  // margin: auto;
+  // border: 1px solid #dedede;
+  // -moz-border-radius: 2px;
+  // -webkit-border-radius: 2px;
+  // border-radius: 2px;
+  // padding: 4px;
 }
 
 .container_head {
@@ -42,6 +57,10 @@
   margin-left: 3%;
   float: left;
   clear: both;
+}
+
+.coll_avatar {
+  margin: auto;
 }
 
 

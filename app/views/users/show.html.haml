@@ -6,10 +6,10 @@
       = @user.first_name
 
   %p
-    .avatar
-      = image_tag @user.avatar, :class => "userimage"
+    .profile_avatar
+      = image_tag @user.avatar.url, :class => "userimage"
 
-  %p
+  %h4
     .bio
       = @user.bio
   %div.collections_container

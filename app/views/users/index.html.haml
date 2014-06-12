@@ -1,11 +1,10 @@
 %h1 All Users
 
-%table
-  - @users.each do |user|
-    %tr
-      .avatar
-        %td= image_tag user.avatar, :class => "userimage"
-      %td
-        %h3
-          .profile_name
-            =link_to user.first_name, "/users/#{user.id}"
+
+- @users.each do |user|
+  %h3
+    .profile_name
+      =link_to user.first_name, "/users/#{user.id}"
+  .profile_avatar
+    = image_tag user.avatar.url, :class => "userimage"
+    
