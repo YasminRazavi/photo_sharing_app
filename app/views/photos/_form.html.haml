@@ -5,25 +5,26 @@
       %ul
         - @photo.errors.full_messages.each do |msg|
           %li= msg
-
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :caption
-    = f.text_area :caption
-  .field
-    = f.label :tag_list, "Tags (separated by commas)"
-    = f.text_field :tag_list
-  .field
-    = f.label :collection_id
-    = user_collections_select f, current_user
-  #new_collection_form.hide
-    = text_field_tag "collection[title]", nil, placeholder: "Title"
-    %br
-    = text_area_tag "collection[description]", nil, placeholder: "Description"
-  .field
-    = f.label :image
-    = f.file_field :image
-  .actions
-    = f.submit 'Save'
+  .container
+    / %form.form-signin
+    %div.inputFields
+      = f.text_field :title, :class => "form-control", :placeholder => "Title"
+    %div.inputFields
+      = f.label :caption
+      = f.text_area :caption
+    %div.inputFields
+      = f.label :tag_list, "Tags (separated by commas)"
+      = f.text_field :tag_list
+    %div.inputFields
+      = f.label :collection_id
+      = user_collections_select f, current_user
+    %div.inputFields
+      #new_collection_form.hide
+        = text_field_tag "collection[title]", nil, placeholder: "Title"
+        %br
+        = text_area_tag "collection[description]", nil, placeholder: "Description"
+    %div.inputFields
+      = f.label :image
+      = f.file_field :image
+    .actions
+      = f.submit 'Save', :class => "btn btn-large btn-primary"
