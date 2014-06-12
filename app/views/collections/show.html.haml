@@ -1,11 +1,9 @@
-%p#notice= notice
 
- 
 
 .heading
   %h1   
     = @collection.title
-    = image_tag @collection.user.avatar.url, :class => "thumbnailimage"
+    = image_tag @collection.user.avatar, :class => "thumbnailimage"
 
 
 

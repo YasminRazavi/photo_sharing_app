@@ -9,47 +9,50 @@
   / %header#top.navbar.navbar-default.navbar-fixed-top
   %body
     %header#top.navbar.navbar-default.navbar-fixed-top
-      .navbar-header.navbar-left
+      .navbar-header.navbar-left.nav-pills
         %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
           %span.sr-only Toggle navigation
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path, :class => "myLogo"
-        = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
-          %button.btn.btn-success.btn-lg
-            %span.glyphicon.glyphicon-user 
+        = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path, :class => "myLogo" 
       %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
-        %ul.nav.navbar-nav
-          %li
-            = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path, :class => "myLogo navbar-header"
+        %ul.nav.nav-pills
           %li
             = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
               %button.btn.btn-success.btn-lg
                 %span.glyphicon.glyphicon-user 
           - if user_signed_in?
             %li
+              = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
+                %button.btn.btn-success.btn-lg
+
+                  %span.glyphicon.glyphicon-circle-arrow-up
+            %li
               = link_to profile_path, :class => "nav navbar-nav" do
                 #pic
                   = image_tag(current_user.avatar.url)
             %li
-              = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
-                %button.btn.btn-success.btn-lg
-                  %span.glyphicon.glyphicon-circle-arrow-up
-            %li
               = search_form_for @q, url: search_path, :class=> "navbar-form navbar-left", :role => "search" do |f|
-                .form-group
-                  = f.search_field :title_or_caption_cont, :placeholder => "search...", :id => 'typeaheadBar', :class => "form-control"
+                .form-group.inputFields
+                  = f.search_field :title_or_caption_cont, :placeholder => "search...", :id => 'typeaheadBar', :class => ""
                 %button.btn.btn-default{type: "submit"} Submit
-        %ul.nav.navbar-nav.navbar-right
           - if !user_signed_in?
-            %li
-              = link_to 'Sign Up', new_user_registration_path
-            %li
-              = link_to 'Log In', new_user_session_path
+            %li.navbar-right
+              = link_to new_user_registration_path, :id => "sri" do
+                %button.btn.btn-info.btn-lg 
+                  %span Sign Up
+            %li.navbar-right
+              = link_to new_user_session_path, :id => "sri" do
+                %button.btn.btn-info.btn-lg
+                  %span Login
           - else
-            %li
-              = link_to 'Logout', destroy_user_session_path, method: :delete
+            %li.navbar-right
+              = link_to destroy_user_session_path, method: :delete, :id => "sri" do
+                %button.btn.btn-danger.btn-lg
+                  %span.glyphicon.glyphicon-arrow-right 
+                    Logout
+
     #main
       - flash.each do |name, msg|
         #flashNav

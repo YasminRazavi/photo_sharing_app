@@ -6,5 +6,5 @@
     .profile_name
       =link_to user.first_name, "/users/#{user.id}"
   .profile_avatar
-    = image_tag user.avatar.url, :class => "userimage"
+    = image_tag user.avatar, :class => "userimage"
     

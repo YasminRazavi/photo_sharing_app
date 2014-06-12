@@ -6,6 +6,7 @@ loadCommentsForPhoto = (id) ->
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
       $(data).each((index, comment) ->
+
           html = "<div class='users'>
             <h2>#{comment.user.name}</h2>
             <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar}>

@@ -4,26 +4,29 @@
       %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
       %ul
         - @photo.errors.full_messages.each do |msg|
-          %li= msg 
-  #photoForm 
-    .field
-      = f.label :title
-      = f.text_field :title, :placeholder => "title"
-    .field
-      = f.label :caption
-      = f.text_area :caption
-    .field
-      = f.label :tag_list, "Tags (separated by commas)"
-      = f.text_field :tag_list
-    .field
-      = f.label :user_id
-      = f.text_field :user_id
-    .field
+          #flashNav
+            %li= msg
+  .container
+    / %form.form-signin
+    %div.inputFields
+      = f.text_field :title, :class => "form-control", :placeholder => "Title"
+    %div.inputFields
+      =  f.text_field :caption, :class => "form-control", :placeholder => "Caption"
+    %div.inputFields
+      = f.text_field :tag_list, :class => "form-control", :placeholder => "Tags (separated by commas)"
+    %div.inputFields
       = f.label :collection_id
-      = f.collection_select :collection_id, Collection.all, :id, :title
-    .field
+      %br
+      = user_collections_select f, current_user
+    %div.inputFields
+      #new_collection_form.hide
+        = text_field_tag "collection[title]", nil, placeholder: "Title", class: "form-control"
+        %br
+        = text_area_tag "collection[description]", nil, placeholder: "Description", class: "form-control"
+    %div.inputFields
       = f.label :image
-      = f.text_area :image
+      = f.file_field :image
     .actions
-      = f.submit 'Save'
+      = f.submit 'Save', :class => "btn btn-large btn-primary"
+
 
