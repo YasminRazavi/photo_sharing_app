@@ -36,6 +36,5 @@ Photoapp::Application.routes.draw do
   end
 
   match "search", to: "photos#search_results", via: [:get, :post], as: :search
-
-  
+  match "/photos/like", to: "photos#like", via: [:get, :post]
 end

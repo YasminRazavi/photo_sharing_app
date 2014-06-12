@@ -10,7 +10,13 @@ class Photo < ActiveRecord::Base
   validates :collection_id, presence: true
   validates :image, presence: true
 
-  def as_json(options)
+  def as_json(liked_status)
+    # if current_user!=
+    #   liked_status = current_user.liked? self
+    #   puts(liked_status)
+    # else
+    #   liked_status= ""
+    # end
     {
       id: id,
       caption: caption, 
@@ -23,7 +29,9 @@ class Photo < ActiveRecord::Base
         name: user.first_name,
         avatar: user.avatar
       },
-      likes: get_likes.size
+      likes: get_likes.size,
+      liked_status: liked_status
+
     }
   end
 

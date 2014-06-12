@@ -26,20 +26,44 @@ loadcontentsForPhoto = (id) ->
     type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
-
+      if data.liked_status 
+        like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
+      else
+        like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
       html = "<div class='photoContent'>
               <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>
-              <p class='picText'>Likes: #{data.likes}</p><br><br>
-              </div>"
+              <p class='picText'>Likes: #{data.likes}</p><br><br>" +like_tag+
+              "</div>"
       $("#grid li.zoomed .photo-descp").append(html)
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
       $(data.tags).each((index, tag) ->
         html_tags = "<p><a href='/tagged?tag=#{tag.name}'>#{tag.name}</a></p>"
 
         $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
+
+# toggleLike = (data, id) ->
+#   console.log(data)
+#   if data.liked_status 
+#     like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
+#   else
+#     like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
+#   $("#grid li.zoomed .photo-descp").append(like_tag)
+
+updateLike = ->
+  id = $(this).data("id")
+  if $(this).attr("class") == "fullheart"
+    like_tag = "<img  id='heart' class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px></img>"
+  else
+    like_tag = "<img  id='heart' class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px></img>"
+  $(this).replaceWith(like_tag)
+  $.ajax "/photos/like",
+    type: 'POST'
+    data: {photo_id: id }
+    dataType: 'json'
+    success: (data, textStatus, jqXHR) ->
 
 enlargePhoto = -> 
   id = $(this).attr('data-id')
@@ -111,13 +135,14 @@ showCollectionPhotos = (e) ->
         })      
 
 
-# SEARCH SECTION
 
     
 $ ->
   $(document).on "click", "li.photo-container", enlargePhoto
   $(document).on "click", ".submitcomment", submitComment
   $(document).on 'click', ".back-to-list", showAllPhotos
+  $(document).on 'click', ".emptyheart", updateLike
+  $(document).on 'click', ".fullheart", updateLike
 
   if document.location.pathname.match /collections\/\d+/
     showCollectionPhotos()

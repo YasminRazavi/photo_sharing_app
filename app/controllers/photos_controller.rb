@@ -21,22 +21,23 @@ class PhotosController < ApplicationController
     end
   end
 
-  # def search
-  #   index
-  #   render :index
-  # end
-
+  def like
+    @photo= Photo.find(params[:photo_id])
+    if current_user.liked? @photo
+      current_user.unlike @photo
+    else
+      @photo.liked_by current_user
+    end
+    render :show 
+  end
+  
   def search_results
-
-    # q = params[:q]
-    # @photos= Photo.search(title_cont: q).result
+  
     tag =  params[:q].values.first
     puts(tag)
     @photos= @q.result(distinct: true)
     @photos << Photo.tagged_with(tag).flatten
     @photos.uniq!
-    # @photos = Photo.where("title LIKE ?", "%#{params[:q]}%") \
-    # | Photo.tagged_with("%#{params[:q]}%")
     render json: @photos
   end
 
@@ -44,10 +45,12 @@ class PhotosController < ApplicationController
   # GET /photos/1.json
   def show
     @photo = Photo.find(params[:id])
-
+    liked_status = ""
+    liked_status = (current_user.liked? @photo) if current_user
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @photo }
+      format.json { render json: @photo.as_json(liked_status) }
+      
     end
   end
 
