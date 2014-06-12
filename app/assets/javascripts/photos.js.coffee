@@ -99,42 +99,28 @@ displayPhoto = (photosArray) ->
     $('#grid').append("<li class='photo-container' data-id=#{photo.id}><img data-id=#{photo.id} class=homephotos src=#{photo.image} width=200></li>")
 
 showAllPhotos = (e) ->
+    # TODO: consider avoding request for all photos when clicking .back-to-list
+    # perhaps makes more sense to just popup box over existing photos, rather than
+    # reloading them all
     $("#grid").empty()
-    $.ajax '/photos',
+    $.ajax "/photos#index",
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
         console.log(data)
         displayPhoto(data)
+        wookifyPhotos()
 
-        $('#grid li').wookmark({
-          align: 'center',
-          autoResize: false, 
-          container: $('#grid'), 
-          offset: 5, 
-          flexibleWidth: 0
-          itemWidth: 210
+wookifyPhotos = ->
+  $('#grid li').wookmark({
+    align: 'center',
+    autoResize: false, 
+    container: $('#grid'), 
+    offset: 5, 
+    flexibleWidth: 0
+    itemWidth: 210
 
-        })
-
-showCollectionPhotos = (e) ->
-    # $("#grid").empty()
-    # $.ajax "#{document.location.href}/photos",
-    #   type: 'GET'
-    #   dataType: 'json'
-    #   success: (data, textStatus, jqXHR) ->
-    #     console.log(data)
-    #     displayPhoto(data)
-
-        $('#grid li').wookmark({
-          align: 'center',
-          autoResize: false, 
-          container: $('#grid'), 
-          offset: 5, 
-          flexibleWidth: 0
-          itemWidth: 210
-
-        })      
+  })      
 
 
 
@@ -146,10 +132,12 @@ $ ->
   $(document).on 'click', ".emptyheart", updateLike
   $(document).on 'click', ".fullheart", updateLike
 
-  if document.location.pathname.match /collections\/\d+/
-    showCollectionPhotos()
-  else if document.location.pathname == "/" || document.location.pathname == "/photos"
-    showAllPhotos()
+  wookifyPhotos()
+
+  # if document.location.pathname.match /collections\/\d+/
+  #   wookifyPhotos()
+  # else if document.location.pathname == "/" || document.location.pathname == "/photos"
+  #   showAllPhotos()
   
   
   

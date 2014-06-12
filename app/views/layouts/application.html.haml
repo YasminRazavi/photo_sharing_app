@@ -9,47 +9,54 @@
   / %header#top.navbar.navbar-default.navbar-fixed-top
   %body
     %header#top.navbar.navbar-default.navbar-fixed-top
-      .container
-        .navbar-header
-          %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path
-        %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
-          %ul.nav.navbar-nav
+      .navbar-header.navbar-left.nav-pills
+        %button.navbar-toggle{"data-target" => ".bs-navbar-collapse", "data-toggle" => "collapse", type: "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to image_tag('https://s3.amazonaws.com/uploads.hipchat.com/39979/776261/H97yZofzgnikoiH/collect_logo_text.png'), root_path, :class => "myLogo" 
+      %nav.collapse.navbar-collapse.bs-navbar-collapse{role: "navigation"}
+        %ul.nav.nav-pills
+          %li
+            = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
+              %button.btn.btn-success.btn-lg
+                %span.glyphicon.glyphicon-user 
+          - if user_signed_in?
             %li
-              = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
+              = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
                 %button.btn.btn-success.btn-lg
-                  %span.glyphicon.glyphicon-user 
-            - if user_signed_in?
-              %li
-                = link_to profile_path, :class => "nav navbar-nav" do
-                  #pic
-                    = image_tag(current_user.avatar)
-              %li
 
-                = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
-                  %button.btn.btn-success.btn-lg
-                    %span.glyphicon.glyphicon-circle-arrow-up
+                  %span.glyphicon.glyphicon-circle-arrow-up
+            %li
+              = link_to profile_path, :class => "nav navbar-nav" do
+                #pic
+                  = image_tag(current_user.avatar.url)
+            %li
+              = search_form_for @q, url: search_path, :class=> "navbar-form navbar-left", :role => "search" do |f|
+                .form-group.inputFields
+                  = f.search_field :title_or_caption_cont, :placeholder => "search...", :id => 'typeaheadBar', :class => ""
+                %button.btn.btn-default{type: "submit"} Submit
+          - if !user_signed_in?
+            %li.navbar-right
+              = link_to new_user_registration_path, :id => "sri" do
+                %button.btn.btn-info.btn-lg 
+                  %span Sign Up
+            %li.navbar-right
+              = link_to new_user_session_path, :id => "sri" do
+                %button.btn.btn-info.btn-lg
+                  %span Login
+          - else
+            %li.navbar-right
+              = link_to destroy_user_session_path, method: :delete, :id => "sri" do
+                %button.btn.btn-danger.btn-lg
+                  %span.glyphicon.glyphicon-arrow-right 
+                    Logout
 
-              %li
-                = search_form_for @q, url: search_path  do |f|
-                  = f.search_field :title_or_caption_cont, placeholder: "search..."
-                  = f.submit
-
-          %ul.nav.navbar-nav.navbar-right
-            - if !user_signed_in?
-              %li
-                = link_to 'Sign Up', new_user_registration_path
-              %li
-                = link_to 'Log In', new_user_session_path
-            - else
-              %li
-                = link_to 'Logout', destroy_user_session_path, method: :delete
     #main
       - flash.each do |name, msg|
         #flashNav
           = content_tag :div, msg, :id => "flash_#{name}"
       = yield
+
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.9.3/typeahead.min.js"

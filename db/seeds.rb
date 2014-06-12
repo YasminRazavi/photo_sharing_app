@@ -5,14 +5,15 @@ Collection.delete_all
 
 #Generating users
 
-user1 = User.create(:first_name=>"Sarah", :last_name => "Knight", :remote_avatar_url => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user", :bio => "I'm from Oxford, and I love t-shirts and pens.")
-user2 = User.create(:first_name=>"Yasmin", :last_name => "Razavi", :remote_avatar_url => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
-user3 = User.create(:first_name=>"Sri", :last_name => "Mohan", :remote_avatar_url => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
-user4 = User.create(:first_name=>"Lisa", :last_name => "Smith", :remote_avatar_url => "http://www.thewellingtonplasticsunit.com/images/side2.jpg", :email => "lisa@gmail.com", :password =>"password", :role => "user")
-user5 = User.create(:first_name=>"Bob", :last_name => "Jones", :remote_avatar_url => "http://www.brocku.ca/brock-news/wp-content/uploads/cache/3395_NpAdvHover.jpg", :email => "bob@gmail.com", :password =>"password", :role => "user")
-user6 = User.create(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user", :bio => "I really just love collecting stuff.")
-user7 = User.create(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user", :bio => "My passion is sharing photos.")
+user1 = User.new(:first_name=>"Sarah", :last_name => "Knight", :remote_avatar_url => "https://avatars0.githubusercontent.com/u/6461304?s=400", :email => "sara@gmail.com", :password =>"password", :role => "user", :bio => "I'm from Oxford, and I love t-shirts and pens.")
+user2 = User.new(:first_name=>"Yasmin", :last_name => "Razavi", :remote_avatar_url => "https://scontent-a-lhr.xx.fbcdn.net/hphotos-xpa1/t1.0-9/10341937_10201334716164102_507462187152992426_n.jpg", :email => "yasmin@gmail.com", :password =>"password", :role => "user")
+user3 = User.new(:first_name=>"Sri", :last_name => "Mohan", :remote_avatar_url => "https://avatars2.githubusercontent.com/u/5783383?s=400", :email => "sri@gmail.com", :password =>"password", :role => "user")
+user4 = User.new(:first_name=>"Lisa", :last_name => "Smith", :remote_avatar_url => "http://www.thewellingtonplasticsunit.com/images/side2.jpg", :email => "lisa@gmail.com", :password =>"password", :role => "user")
+user5 = User.new(:first_name=>"Bob", :last_name => "Jones", :remote_avatar_url => "http://www.brocku.ca/brock-news/wp-content/uploads/cache/3395_NpAdvHover.jpg", :email => "bob@gmail.com", :password =>"password", :role => "user")
+user6 = User.new(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user", :bio => "I really just love collecting stuff.")
+user7 = User.new(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user", :bio => "My passion is sharing photos.")
 
+[user1, user2, user3, user4, user5, user6, user7].each(&:skip_confirmation!).each(&:save!)
 
 # Generating two collections per user
 
@@ -112,7 +113,3 @@ photo51 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :capti
 photo52 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://4.bp.blogspot.com/-4JD7S5LUQRY/Uawm__wixLI/AAAAAAAAALQ/77ash8evMjw/s1600/blue+shells.jpg")
 photo53 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://img.xcitefun.net/users/2010/05/171039,xcitefun-shell19.jpg")
 photo54 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://images.forwallpaper.com/files/thumbs/preview/25/251459__photo-macro-landscapes-beaches-beautiful-wallpaper-sand-shells-shell-shell-shells-sun_p.jpg")
-
-
-
-
