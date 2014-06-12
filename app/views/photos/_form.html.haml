@@ -4,25 +4,26 @@
       %h2= "#{pluralize(@photo.errors.count, "error")} prohibited this photo from being saved:"
       %ul
         - @photo.errors.full_messages.each do |msg|
-          %li= msg
+          %li= msg 
+  #photoForm 
+    .field
+      = f.label :title
+      = f.text_field :title, :placeholder => "title"
+    .field
+      = f.label :caption
+      = f.text_area :caption
+    .field
+      = f.label :tag_list, "Tags (separated by commas)"
+      = f.text_field :tag_list
+    .field
+      = f.label :user_id
+      = f.text_field :user_id
+    .field
+      = f.label :collection_id
+      = f.collection_select :collection_id, Collection.all, :id, :title
+    .field
+      = f.label :image
+      = f.text_area :image
+    .actions
+      = f.submit 'Save'
 
-  .field
-    = f.label :title
-    = f.text_field :title
-  .field
-    = f.label :caption
-    = f.text_area :caption
-  .field
-    = f.label :tag_list, "Tags (separated by commas)"
-    = f.text_field :tag_list
-  .field
-    = f.label :user_id
-    = f.text_field :user_id
-  .field
-    = f.label :collection_id
-    = f.collection_select :collection_id, Collection.all, :id, :title
-  .field
-    = f.label :image
-    = f.file_field :image
-  .actions
-    = f.submit 'Save'

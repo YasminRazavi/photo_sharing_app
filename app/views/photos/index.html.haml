@@ -9,13 +9,18 @@
 /     = f.search_field :title_cont
 /     = f.submit
 
-%ul#grid
+
 
 .ajaxloader
   = image_tag "/assets/ajax-loader.gif"
   %h2
     = "Loading"
 
+
+%ul#grid.search
+  = render @photos
+  
+>>>>>>> dev
 
  
 %br

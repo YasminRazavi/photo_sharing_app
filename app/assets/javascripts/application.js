@@ -17,4 +17,14 @@
 
 $(document).ready(function(){
   $('#flashNav').delay(2000).slideUp(1000);
+
+  $('#typeaheadBar').typeahead([
+    {
+      name: 'mysearch',
+      displayKey: 'title',
+      remote: '/search?utf8=%E2%9C%93&q%5Btitle_or_caption_cont%5D=%QUERY'
+    }
+  ]);
+
 });
+

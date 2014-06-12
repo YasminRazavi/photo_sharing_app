@@ -36,14 +36,17 @@ class PhotosController < ApplicationController
   end
   
   def search_results
-  
     tag =  params[:q].values.first
     puts(tag)
-    @photos= @q.result(distinct: true)
-    @photos << Photo.tagged_with(tag).flatten
+    @photos= @q.result(distinct: true).to_a
+    @photos += Photo.tagged_with(tag).flatten
     @photos.uniq!
-    render json: @photos
+    respond_to do |format|
+      format.html 
+      format.json { render json: @photos }
+    end
   end
+
 
   # GET /photos/1
   # GET /photos/1.json
