@@ -17,7 +17,11 @@
     = f.text_field :tag_list
   .field
     = f.label :collection_id
-    = f.collection_select :collection_id, current_user.collections, :id, :title
+    = user_collections_select f, current_user
+  #new_collection_form.hide
+    = text_field_tag :collection[:title], placeholder: "Title"
+    %br
+    = text_area_tag "collection[description]", placeholder: "Description"
   .field
     = f.label :image
     = f.file_field :image

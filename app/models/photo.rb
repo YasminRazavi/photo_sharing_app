@@ -4,6 +4,7 @@ class Photo < ActiveRecord::Base
   belongs_to :collection, :class_name=> "Collection", :foreign_key => "collection_id"
   has_many :comments
 
+
   mount_uploader :image, ImageUploader
 
   acts_as_votable

@@ -74,7 +74,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(params[:photo])
+    @photo = Photo.new
     @photo.user = current_user
     authorize! :create, @photo
     respond_to do |format|
@@ -131,5 +131,6 @@ class PhotosController < ApplicationController
     @photo.liked_by current_user
     redirect_to photos_path
   end
+
 
 end
