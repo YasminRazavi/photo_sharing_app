@@ -97,75 +97,28 @@ displayPhoto = (photosArray) ->
     $('#grid').append("<li class='photo-container' data-id=#{photo.id}><img data-id=#{photo.id} class=homephotos src=#{photo.image} width=200></li>")
 
 showAllPhotos = (e) ->
-  # pusedo code
-  # if grid choosen is the search grid, then if $('.search') 
-  # settings = serch grid
-    #  else 
-    #   settings = show grid 
-
-    # do everything else as normal   
-
-    # #settings - normal show page 
-    # var url = '/photos';
-    # var grid = "#grid";
-
-    # #settings - search results page 
-    # '/search?utf8=%E2%9C%93&q%5Btitle_or_caption_cont%5D=%QUERY'
-
-
-    # var url = '/photos#search_results';
-    # var grid = "#grid";
-    # url;
-    # if $("#grid").hasClass('search');
-    #   url = '/photos#search_results';
-    # else
-    #   url = '/photos#index';
-
-    # var context = context
-
-    # if context == 'search'
-
-    if $("#grid").hasClass("search")
-      url = "/photos#search_results"
-    else
-      url = "/photos#index"
-    
+    # TODO: consider avoding request for all photos when clicking .back-to-list
+    # perhaps makes more sense to just popup box over existing photos, rather than
+    # reloading them all
     $("#grid").empty()
-    $.ajax url,
+    $.ajax "/photos#index",
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
         console.log(data)
         displayPhoto(data)
+        wookifyPhotos()
 
-        $('#grid li').wookmark({
-          align: 'center',
-          autoResize: false, 
-          container: $('#grid'), 
-          offset: 5, 
-          flexibleWidth: 0
-          itemWidth: 210
+wookifyPhotos = ->
+  $('#grid li').wookmark({
+    align: 'center',
+    autoResize: false, 
+    container: $('#grid'), 
+    offset: 5, 
+    flexibleWidth: 0
+    itemWidth: 210
 
-        })
-
-showCollectionPhotos = (e) ->
-    # $("#grid").empty()
-    # $.ajax "#{document.location.href}/photos",
-    #   type: 'GET'
-    #   dataType: 'json'
-    #   success: (data, textStatus, jqXHR) ->
-    #     console.log(data)
-    #     displayPhoto(data)
-
-        $('#grid li').wookmark({
-          align: 'center',
-          autoResize: false, 
-          container: $('#grid'), 
-          offset: 5, 
-          flexibleWidth: 0
-          itemWidth: 210
-
-        })      
+  })      
 
 
 
@@ -177,10 +130,12 @@ $ ->
   $(document).on 'click', ".emptyheart", updateLike
   $(document).on 'click', ".fullheart", updateLike
 
-  if document.location.pathname.match /collections\/\d+/
-    showCollectionPhotos()
-  else if document.location.pathname == "/" || document.location.pathname == "/photos"
-    showAllPhotos()
+  wookifyPhotos()
+
+  # if document.location.pathname.match /collections\/\d+/
+  #   wookifyPhotos()
+  # else if document.location.pathname == "/" || document.location.pathname == "/photos"
+  #   showAllPhotos()
   
   
   
