@@ -12,13 +12,23 @@ class Photo < ActiveRecord::Base
   validates :collection_id, presence: true
   validates :image, presence: true
 
+  def self.ranked
+    # TODO: Replace this n+1 problem with a sql group/count
+    # Photo.all.sort_by { |p| p.get_likes.size }.reverse
+
+    (joins(:votes_for).
+    group("photos.id").
+    order("count(votes.id) DESC") + Photo.all).uniq
+
+
+
+  end
+
+
+
+
   def as_json(liked_status)
-    # if current_user!=
-    #   liked_status = current_user.liked? self
-    #   puts(liked_status)
-    # else
-    #   liked_status= ""
-    # end
+   
     {
       id: id,
       caption: caption, 

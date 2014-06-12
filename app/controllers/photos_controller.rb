@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
         Collection.find(params[:id]).photos.order("created_at DESC")
       end
     else
-      Photo.all
+      Photo.ranked
     end
     respond_to do |format|
       format.html # index.html.erb

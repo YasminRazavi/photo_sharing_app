@@ -8,7 +8,7 @@ loadCommentsForPhoto = (id) ->
       $(data).each((index, comment) ->
           html = "<div class='users'>
             <h2>#{comment.user.name}</h2>
-            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar.url}>
+            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar}>
             <p class='user_comment'>#{comment.text}</p>
             </div>"
           console.log($(this))
@@ -26,12 +26,13 @@ loadcontentsForPhoto = (id) ->
     type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
+      console.log(data)
       if data.liked_status 
         like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
       else
         like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
       html = "<div class='photoContent'>
-              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar.url}>
+              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>
@@ -107,7 +108,7 @@ displayPhoto = (photosArray) ->
           itemWidth: 210
         })
     img.src = photo.image;
-    # $('.ajaxloader').hide()
+    $('.ajaxloader').hide()
     
 
 
@@ -139,8 +140,9 @@ wookifyPhotos = ->
     offset: 5, 
     flexibleWidth: 0
     itemWidth: 210
-
-  })      
+  })   
+  $('.ajaxloader').hide() 
+  
 
 
 
@@ -153,13 +155,10 @@ $ ->
   $(document).on 'click', ".emptyheart", updateLike
   $(document).on 'click', ".fullheart", updateLike
 
-  wookifyPhotos()
 
-  # if document.location.pathname.match /collections\/\d+/
-  #   wookifyPhotos()
-  # else if document.location.pathname == "/" || document.location.pathname == "/photos"
-  #   showAllPhotos()
-  
+  $(window).load -> 
+    wookifyPhotos()
+      
 
   
   
