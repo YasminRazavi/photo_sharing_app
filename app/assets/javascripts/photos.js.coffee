@@ -6,9 +6,10 @@ loadCommentsForPhoto = (id) ->
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
       $(data).each((index, comment) ->
+
           html = "<div class='users'>
             <h2>#{comment.user.name}</h2>
-            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar.url}>
+            <img data-id=#{comment.user_id} class='user_photo_comments' src=#{comment.user.avatar}>
             <p class='user_comment'>#{comment.text}</p>
             </div>"
           console.log($(this))
@@ -26,12 +27,13 @@ loadcontentsForPhoto = (id) ->
     type: 'GET'
     dataType: 'json'
     success: (data, textStatus, jqXHR) -> 
+      console.log(data)
       if data.liked_status 
         like_tag = "<img  class='fullheart' data-id=#{id} src='/assets/fullheart.jpg' width=50px>"
       else
         like_tag = "<img  class='emptyheart' data-id=#{id} src='/assets/emptyheart.svg' width=50px>"
       html = "<div class='photoContent'>
-              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar.url}>
+              <img data-id=#{data.user_id} class='user_photo_comments' src=#{data.user.avatar}>
               <h2>#{data.user.name}</h2><br><br>
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>

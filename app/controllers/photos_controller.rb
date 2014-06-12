@@ -74,7 +74,8 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new
+    create_new_collection_if_needed
+    @photo = Photo.new(params[:photo])
     @photo.user = current_user
     authorize! :create, @photo
     respond_to do |format|
@@ -130,6 +131,15 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @photo.liked_by current_user
     redirect_to photos_path
+  end
+
+  private
+
+  def create_new_collection_if_needed
+    if params[:photo][:collection_id] == "new"
+      collection = Collection.create!(params[:collection].merge(user: current_user))
+      params[:photo][:collection_id] = collection.id
+    end
   end
 
 

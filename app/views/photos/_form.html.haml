@@ -19,9 +19,9 @@
     = f.label :collection_id
     = user_collections_select f, current_user
   #new_collection_form.hide
-    = text_field_tag :collection[:title], placeholder: "Title"
+    = text_field_tag "collection[title]", nil, placeholder: "Title"
     %br
-    = text_area_tag "collection[description]", placeholder: "Description"
+    = text_area_tag "collection[description]", nil, placeholder: "Description"
   .field
     = f.label :image
     = f.file_field :image
