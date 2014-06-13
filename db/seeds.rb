@@ -126,11 +126,6 @@ photo53 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :capti
 photo54 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://images.forwallpaper.com/files/thumbs/preview/25/251459__photo-macro-landscapes-beaches-beautiful-wallpaper-sand-shells-shell-shell-shells-sun_p.jpg")
 
 
-<<<<<<< HEAD
-
-
-
-=======
 ####################
 # more pens
 photo401 = Photo.create(:title=> "Pen", :user_id=>1, :collection_id=>1, :caption=>"pen", :remote_image_url=>"http://www.gadgetpens.com/images/products/stainless.gif")
