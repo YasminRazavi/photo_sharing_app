@@ -13,7 +13,10 @@ user5 = User.new(:first_name=>"Bob", :last_name => "Jones", :remote_avatar_url =
 user6 = User.new(:first_name=>"Daisy", :last_name => "Simmons", :email => "daisy@gmail.com", :password =>"password", :role => "user", :bio => "I really just love collecting stuff.")
 user7 = User.new(:first_name=>"Ed", :last_name => "Woodward", :email => "ed@gmail.com", :password =>"password", :role => "user", :bio => "My passion is sharing photos.")
 
-[user1, user2, user3, user4, user5, user6, user7].each(&:skip_confirmation!).each(&:save!)
+sriUserMatt = User.new(:first_name=>"Matt", :last_name => "Smith",:remote_avatar_url => "http://upload.wikimedia.org/wikipedia/en/2/28/Deep_Fried_Man_portrait_-_real_name_Daniel_Friedman_-_South_African_Comedian.jpg", :email => "matt@gmail.com", :password =>"password", :role => "user", :bio => "I love collecting vintage vinyl")
+sriUserLisa = User.new(:first_name=>"Lisa", :last_name => "Andrews",:remote_avatar_url => "http://10ambeauty.com/wp-content/uploads/2013/01/Wearing-NARS-And-God-Created-The-Woman.jpg", :email => "lisa2@gmail.com", :password =>"password", :role => "user", :bio => "Flowers are amazing")
+
+[user1, user2, user3, user4, user5, user6, user7, sriUserMatt, sriUserLisa].each(&:skip_confirmation!).each(&:save!)
 
 # Generating two collections per user
 
@@ -29,6 +32,10 @@ col9 = Collection.create(:title => "umbrellas", :description => "Amazing umbrell
 col10 = Collection.create(:title => "surfboards", :description => "Nice surfboards", :user_id=>6)
 col11 = Collection.create(:title => "shells", :description => "Beautiful shells", :user_id=>6)
 
+
+sriLisaColFlowers= Collection.create(:title => "flowers", :description => "Lovely Flowers", :user => sriUserLisa)
+sriMattColBalls= Collection.create(:title => "Sports Equipment", :description => "Different type of balls", :user => sriUserMatt)
+sriMattColVinyl= Collection.create(:title => "Vinyl Covers", :description => "Different type of balls", :user => sriUserMatt)
 # Generating four photos per collection
 #pens
 photo1 = Photo.create(:title=> "Silver pen", :user_id=>1, :collection_id=>1, :caption=>"pen from van", :remote_image_url=>"http://johnlewis.scene7.com/is/image/JohnLewis/230953752?$prod_main$")
@@ -113,3 +120,37 @@ photo51 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :capti
 photo52 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://4.bp.blogspot.com/-4JD7S5LUQRY/Uawm__wixLI/AAAAAAAAALQ/77ash8evMjw/s1600/blue+shells.jpg")
 photo53 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://img.xcitefun.net/users/2010/05/171039,xcitefun-shell19.jpg")
 photo54 = Photo.create(:title=> "Shell", :user_id=>6, :collection_id=>11, :caption=>"Cool shell", :remote_image_url=>"http://images.forwallpaper.com/files/thumbs/preview/25/251459__photo-macro-landscapes-beaches-beautiful-wallpaper-sand-shells-shell-shell-shells-sun_p.jpg")
+
+
+
+
+
+
+#balls
+sriBallOne = Photo.create(:title=> "Play Balls", :user => sriUserMatt , :collection => sriMattColBalls, :remote_image_url=>"http://upload.wikimedia.org/wikipedia/commons/b/bf/Toy_balls_with_different_Colors.jpg", :caption=> "My ball collection")
+sriBallTwo = Photo.create(:title=> "Football", :user => sriUserMatt, :collection => sriMattColBalls, :remote_image_url=>"http://leicesterexchanges.com/wp-content/uploads/2013/06/Football.jpg", :caption=> "My football")
+sriBallThree = Photo.create(:title=> "Baseball", :user => sriUserMatt, :collection => sriMattColBalls, :remote_image_url=>"http://upload.wikimedia.org/wikipedia/en/1/1e/Baseball_(crop).jpg", :caption=> "Got these in New York")
+sriBallFour = Photo.create(:title=> "NFL", :user => sriUserMatt, :collection => sriMattColBalls, :remote_image_url=>"http://www.markthompson.us/gameballs/NFL/NFL2006LG.jpg", :caption=> "Got this in New York too")
+
+
+
+
+#flowers
+sriFlowerOne = Photo.create(:title=> "Roses", :user => sriUserLisa , :collection => sriLisaColFlowers, :remote_image_url=>"http://i.telegraph.co.uk/multimedia/archive/02489/roses_2489378b.jpg", :caption=> "I love roses!")
+sriFlowerTwo = Photo.create(:title=> "Pansy", :user => sriUserLisa, :collection => sriLisaColFlowers, :remote_image_url=>"http://upload.wikimedia.org/wikipedia/commons/7/76/Viola_tricolor_pansy_flower_close_up.jpg", :caption=> "Had never heard of pansies")
+sriFLowerThree = Photo.create(:title=> "Sunflower", :user => sriUserLisa, :collection => sriLisaColFlowers, :remote_image_url=>"http://upload.wikimedia.org/wikipedia/commons/d/d5/Sunflowers.jpg", :caption=> "Sunflowers are amazing!")
+sriFlowerFour = Photo.create(:title=> "Orchid", :user => sriUserLisa, :collection => sriLisaColFlowers, :remote_image_url=>"http://upload.wikimedia.org/wikipedia/commons/3/30/Orchid_Phalaenopsis_hybrid.jpg", :caption=> "Orchids are Singapore's national flower")
+
+
+
+
+#vinly
+sriVinlyOne = Photo.create(:title=> "Black Eyed Peas", :user => sriUserMatt , :collection => sriMattColVinyl, :remote_image_url=>"http://2.bp.blogspot.com/_zqFoq3qej2c/TTESjWiBaoI/AAAAAAABno8/dWnc1Zu8fgo/s640/bep.jpg", :caption=> "I love roses!")
+sriVinlyTwo = Photo.create(:title=> "Aerosmith", :user => sriUserMatt, :collection => sriMattColVinyl, :remote_image_url=>"http://ecx.images-amazon.com/images/I/51CJ1kPHPHL._SY300_.jpg", :caption=> "Had never heard of pansies")
+sriVinlyThree = Photo.create(:title=> "Madonna", :user => sriUserMatt, :collection => sriMattColVinyl, :remote_image_url=>"http://www.images.noizesolution.co.uk/pdg/7/m/madonna-vogue-picture-disc-a.jpg", :caption=> "Sunflowers are amazing!")
+sriVinlyFour = Photo.create(:title=> "Jamiroquai", :user => sriUserMatt, :collection => sriMattColVinyl, :remote_image_url=>"http://m1.behance.net/rendition/modules/26209957/disp/2ab8f849b69eff7335a04b5d888df00c.jpg", :caption=> "Orchids are Singapore's national flower")
+
+
+
+
+

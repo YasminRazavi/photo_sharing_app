@@ -15,14 +15,61 @@
 //= require bootstrap.min
 //= require_tree .
 
+function animationHover(element, animation){
+  element = $(element);
+  element.hover(
+    function() {
+      element.addClass('animated ' + animation);
+    },
+    function(){
+      //wait for animation to finish before removing classes
+      window.setTimeout( function(){
+        element.removeClass('animated ' + animation);
+      }, 2000);
+    }
+  );
+};
+
+
+
 $(document).ready(function(){
   $('#flashNav').delay(2000).slideUp(1000);
-
+  $('.containerUser').each(function() {
+        animationHover(this, 'pulse');
+    });
   $('#typeaheadBar').typeahead([
     {
       name: 'mysearch',
-      displayKey: 'title',
-      remote: '/search?utf8=%E2%9C%93&q%5Btitle_or_caption_cont%5D=%QUERY'
+      local: [ "Pens", "t-shirts", "sneakers", "bikes", "Heels", "teapots", "bow ties", "umbrellas", "surfboards", "shells", "balls", "flowers"]
+
+   
+      // source: function (response) {
+      //       titles = $.map(response, function (i, item) {
+      //         return { id: item.id, name: item.title}
+      //       });
+
+      //       console.log(titles);
+      //       return titles;
+      //   }
+    //   source: function (query, process) {
+    //     console.log(query, process)
+    //     return $.ajax({
+    //         url: $('#myTypeahead').data('link'),
+    //         type: 'post',
+    //         data: { query: query },
+    //         dataType: 'json',
+    //         success: function (result) {
+
+    //             var resultList = result.map(function (item) {
+    //                 var aItem = { id: item.Id, name: item.Name };
+    //                 return JSON.stringify(aItem);
+    //             });
+
+    //             return process(resultList);
+
+    //         }
+    //     });
+    
     }
   ]);
 
