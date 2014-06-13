@@ -7,3 +7,5 @@ $ ->
     selected_value = $('#photo_collection_id').val()
     if selected_value is "new"
       $("#new_collection_form").toggleClass "hide"
+
+    
