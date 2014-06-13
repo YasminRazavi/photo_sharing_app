@@ -21,6 +21,9 @@ class PhotosController < ApplicationController
     end
   end
 
+  def welcome
+    render :welcome
+  end
   def like
     @photo= Photo.find(params[:photo_id])
     if current_user.liked? @photo
@@ -129,7 +132,8 @@ class PhotosController < ApplicationController
       @photos = Photo.tagged_with(params[:tag])
     else 
       @photos = Photo.postall
-    end  
+    end 
+   
   end
 
   # def vote 

@@ -20,12 +20,12 @@
         %ul.nav.nav-pills
           %li
             = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
-              %button.btn.btn-success.btn-lg
+              %button.btn.btn-success.btn-md
                 %span.glyphicon.glyphicon-user 
           - if user_signed_in?
             %li
               = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
-                %button.btn.btn-success.btn-lg
+                %button.btn.btn-success.btn-md
 
                   %span.glyphicon.glyphicon-circle-arrow-up
             %li
@@ -40,11 +40,11 @@
           - if !user_signed_in?
             %li.navbar-right
               = link_to new_user_registration_path, :id => "sri" do
-                %button.btn.btn-success.btn-lg 
+                %button.btn.btn-success.btn-md 
                   %span Sign Up
             %li.navbar-right
               = link_to new_user_session_path, :id => "sri" do
-                %button.btn.btn-success.btn-lg
+                %button.btn.btn-success.btn-md
                   %span Login
           - else
             %li.navbar-right

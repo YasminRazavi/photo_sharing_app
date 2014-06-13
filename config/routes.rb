@@ -1,5 +1,6 @@
 Photoapp::Application.routes.draw do
   resources :comments
+  
 
   resources :photos do 
     member do
@@ -23,7 +24,6 @@ Photoapp::Application.routes.draw do
 
   get "/users/:user_id/collections", to: "collections#index"
 
-  root :to => "photos#index"
 
   match 'tagged' => 'photos#tagged', :as => 'tagged'
 
@@ -33,6 +33,7 @@ Photoapp::Application.routes.draw do
     match 'profile' => 'users#profile', via: :get
     match 'users' => 'users#index', via: :get
     match 'users/:id' => 'users#show', via: :get
+    root to: "devise/registrations#new"
   end
 
   match "search", to: "photos#search_results", via: [:get, :post], as: :search
