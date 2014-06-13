@@ -66,5 +66,44 @@ button span {
   margin: 0 0 0 17px;
 
 }
+.containerUser
+{
+
+  font-size: 40px;
+  font-weight:bold;
+  
+}
+.name
+{
+  margin: 10px 0px 5px 55px;
+  font-size: 25px;
+
+
+}
+
+#users
+{
+  margin: 10px 0 0 0;
+ 
+
+}
+
+#thing
+{
+  background-image: url(http://subtlepatterns.com/patterns/congruent_pentagon.png);
+
+
+}
+
+
+
+
+/*.user {
+  border: solid 1px #CCC;
+  padding: 10px 10px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}*/
 
 

@@ -33,7 +33,9 @@ Photoapp::Application.routes.draw do
     match 'profile' => 'users#profile', via: :get
     match 'users' => 'users#index', via: :get
     match 'users/:id' => 'users#show', via: :get
+
     root to: "devise/registrations#new"
+
   end
 
   match "search", to: "photos#search_results", via: [:get, :post], as: :search
