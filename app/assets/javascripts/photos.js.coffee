@@ -38,7 +38,8 @@ loadcontentsForPhoto = (id) ->
               <h3 class='picText'>#{data.title}</h3><br><br>
               <p class='picText'>#{data.caption}</p><br><br>
               <p class='picLikes'>Likes: #{data.likes}</p><br><br>" +like_tag+
-              "</div>"
+              "</div>
+              <div class='btn'><a href='/photos/#{id}/edit'>Edit</a></div>" 
       $("#grid li.zoomed .photo-descp").append(html)
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
       $(data.tags).each((index, tag) ->
