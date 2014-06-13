@@ -72,6 +72,8 @@ photo21 = Photo.create(:title=> "Gross and Cutler", :user_id=>2, :collection_id=
 photo22 = Photo.create(:title=> "Karen Walker", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://madisonplus.com/wp-content/uploads/2010/04/sunglasses01.jpg", :caption=> "vintage 89")
 photo23 = Photo.create(:title=> "Prada Flower Sunglasses", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://images2.trendnstylez.com/wp-content/uploads/2013/02/sunglasses-trends-2013-prada-floral-sunglasses.jpg", :caption=> "bought summer 2012")
 photo24 = Photo.create(:title=> "Prada Flower Sunglasses", :user_id=>2, :collection_id=>6, :remote_image_url=>"https://s3.amazonaws.com/assets.svpply.com/large/708696.jpg?1401214165", :caption=> "my dad's")
+Photo.create(:title=> "Celine", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://billidollarbaby.com/wp-content/uploads/2014/04/kim-kardashian-in-celine-skate-sunglasses-arriving-to-la-after-thailand-vacation-2.jpg", :caption=> "Vintage Celine's")
+Photo.create(:title=> "Gross and Cutler", :user_id=>2, :collection_id=>6, :remote_image_url=>"http://opticalvisionresources.com/wp-content/uploads/2012/03/Cutler_Gross-2012.jpg", :caption=> "coolest brand in the world")
 
 #teapots
 photo25 = Photo.create(:title=> "Teapot", :user_id=>4, :collection_id=>7, :caption=>"Cool teapot", :remote_image_url=>"http://www.fantes.com/images/120664tea_pots.jpg")

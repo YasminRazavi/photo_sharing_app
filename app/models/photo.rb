@@ -19,7 +19,7 @@ class Photo < ActiveRecord::Base
 
     (joins(:votes_for).
     group("photos.id").
-    order("count(votes.id) DESC") + Photo.all).uniq
+    order("count(votes.id) DESC") + Photo.all.shuffle).uniq
 
 
 
