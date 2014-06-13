@@ -38,14 +38,17 @@ loadcontentsForPhoto = (id) ->
               <p class='picText'>#{data.caption}</p><br><br>
               <p class='picLikes'>Likes: #{data.likes}</p><br><br>" +like_tag+
               "</div>"
+      
       $("#grid li.zoomed .photo-descp").append(html)
+
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
       $(data.tags).each((index, tag) ->
         html_tags = "<p><a href='/tagged?tag=#{tag.name}'>#{tag.name}</a></p>"
 
         $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
-
-
+      if data.user.current_user == true
+        html2 = "<div class='btn'><a href='/photos/#{id}/edit'>Edit</a></div>"
+        $("#grid li.zoomed .photoContent .photoTags").append(html2)
 updateLike = ->
   id = $(this).data("id")
   if $(this).attr("class") == "fullheart"
@@ -120,14 +123,13 @@ showAllPhotos = (e) ->
     # perhaps makes more sense to just popup box over existing photos, rather than
     # reloading them all
 
+
     $("#grid").empty()
     $.ajax "/photos#index",
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
-        data = _.sortBy(data, "likes").reverse()
-        console.log(data)
-        
+        data = _.sortBy(data, "likes").reverse()s
         displayPhoto(data)
         # wookifyPhotos()
 

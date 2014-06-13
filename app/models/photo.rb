@@ -16,7 +16,6 @@ class Photo < ActiveRecord::Base
   def self.ranked
     # TODO: Replace this n+1 problem with a sql group/count
     # Photo.all.sort_by { |p| p.get_likes.size }.reverse
-
     (joins(:votes_for).
     group("photos.id").
     order("count(votes.id) DESC") + Photo.all.shuffle).uniq
@@ -28,7 +27,14 @@ class Photo < ActiveRecord::Base
 
 
 
-  def as_json(liked_status)
+  def as_json(liked_status, current_user=nil)
+
+    if current_user == user
+      current_user = true
+    else
+      current_user= false
+    end
+
    
     {
       id: id,
@@ -39,6 +45,7 @@ class Photo < ActiveRecord::Base
       image: image.url, 
       tags: tags,
       user: {
+        current_user: current_user,
         name: user.first_name,
         avatar: user.avatar.url
       },
