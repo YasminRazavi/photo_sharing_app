@@ -39,14 +39,17 @@ loadcontentsForPhoto = (id) ->
               <p class='picText'>#{data.caption}</p><br><br>
               <p class='picLikes'>Likes: #{data.likes}</p><br><br>" +like_tag+
               "</div>"
+      
       $("#grid li.zoomed .photo-descp").append(html)
+
       $("#grid li.zoomed .photoContent").append("<div class='photoTags'><h3>Tags:</h3> </div>")
       $(data.tags).each((index, tag) ->
         html_tags = "<p><a href='/tagged?tag=#{tag.name}'>#{tag.name}</a></p>"
 
         $("#grid li.zoomed .photoContent .photoTags").append(html_tags))
-
-
+      if data.user.current_user == true
+        html2 = "<div class='btn'><a href='/photos/#{id}/edit'>Edit</a></div>"
+        $("#grid li.zoomed .photoContent .photoTags").append(html2)
 updateLike = ->
   id = $(this).data("id")
   if $(this).attr("class") == "fullheart"
@@ -116,7 +119,6 @@ displayPhoto = (photosArray) ->
 showAllPhotos = (e) ->
 
     $('.ajaxloader').show()
-
     $("#grid").empty()
     $.ajax "/photos#index",
       type: 'GET'
@@ -125,7 +127,6 @@ showAllPhotos = (e) ->
         console.log("data unsorted", data)
         data = _.sortBy(data, "likes").reverse()
         console.log("data sorted", data)
-        
         displayPhoto(data)
         wookifyPhotos()
 

@@ -31,7 +31,7 @@ class PhotosController < ApplicationController
     liked_status = current_user.liked? @photo
     respond_to do |format|
       # format.html # show.html.erb
-      format.json { render json: @photo.as_json(liked_status) }
+      format.json { render json: @photo.as_json(liked_status, current_user) }
     end
   end
   
@@ -56,7 +56,7 @@ class PhotosController < ApplicationController
     liked_status = (current_user.liked? @photo) if current_user
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @photo.as_json(liked_status) }
+      format.json { render json: @photo.as_json(liked_status, current_user) }
       
     end
   end
@@ -103,7 +103,7 @@ class PhotosController < ApplicationController
     authorize! :update, @photo
     respond_to do |format|
       if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
+        format.html { redirect_to @photo.collection, notice: 'Photo was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
