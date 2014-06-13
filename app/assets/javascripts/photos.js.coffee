@@ -129,7 +129,7 @@ showAllPhotos = (e) ->
       type: 'GET'
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
-        data = _.sortBy(data, "likes").reverse()s
+        data = _.sortBy(data, "likes").reverse()
         displayPhoto(data)
         # wookifyPhotos()
 
