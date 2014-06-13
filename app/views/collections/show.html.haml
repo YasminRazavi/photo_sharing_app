@@ -4,13 +4,19 @@
   %h1   
     = @collection.title
     = image_tag @collection.user.avatar, :class => "thumbnailimage"
+  .coll_centre
+    %h4
+      = @collection.description
+
 
 
 
 %ul#grid
+
   - @collection.photos.each do |photo|
     %li.photo-container{"data-id" => photo.id}
       %img.homephotos{"data-id" => photo.id, :src => photo.image, :width => 200}
+
 
 
 / %p

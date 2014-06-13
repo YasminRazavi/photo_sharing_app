@@ -20,31 +20,27 @@
         %ul.nav.nav-pills
           %li
             = link_to users_path, :class => "nav navbar-nav", :id => 'sri' do
-              %button.btn.btn-success.btn-lg
+              %button.btn.btn-success.btn-md
                 %span.glyphicon.glyphicon-user 
           - if user_signed_in?
             %li
               = link_to new_photo_path, :class => "nav navbar-nav", :id => 'sri' do
-                %button.btn.btn-success.btn-lg
+                %button.btn.btn-success.btn-md
 
                   %span.glyphicon.glyphicon-circle-arrow-up
             %li
               = link_to profile_path, :class => "nav navbar-nav" do
                 #pic
                   = image_tag(current_user.avatar.url)
-            %li
-              = search_form_for @q, url: search_path, :class=> "navbar-form navbar-left", :role => "search" do |f|
-                .form-group.inputFields
-                  = f.search_field :title_or_caption_cont, :placeholder => "search...", :id => 'typeaheadBar', :class => ""
-                %button.btn.btn-default{type: "submit"} Submit
+            
           - if !user_signed_in?
             %li.navbar-right
               = link_to new_user_registration_path, :id => "sri" do
-                %button.btn.btn-info.btn-lg 
+                %button.btn.btn-success.btn-md 
                   %span Sign Up
             %li.navbar-right
               = link_to new_user_session_path, :id => "sri" do
-                %button.btn.btn-info.btn-lg
+                %button.btn.btn-success.btn-md
                   %span Login
           - else
             %li.navbar-right
@@ -52,7 +48,11 @@
                 %button.btn.btn-danger.btn-lg
                   %span.glyphicon.glyphicon-arrow-right 
                     Logout
-
+          %li.navbar-right
+            = search_form_for @q, url: search_path, :class=> "navbar-form navbar-left", :role => "search" do |f|
+              .form-group.inputFields
+                = f.search_field :title_or_caption_cont, :placeholder => "search...", :id => 'typeaheadBar', :class => ""
+              %button.btn.btn-default{type: "submit"} Submit
     #main
       - flash.each do |name, msg|
         #flashNav

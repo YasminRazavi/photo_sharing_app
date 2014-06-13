@@ -1,20 +1,35 @@
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = devise_error_messages!
-  .container
-    %form.form-signin
-      %h2.form-signin-heading Sign up
-      %div.inputFields
-        = f.text_field :first_name, :class => "form-control", :placeholder => "First Name"
-      %div.inputFields
-        = f.text_field :last_name, :class => "form-control", :placeholder => "Last Name"
-      %div.inputFields
-        = f.text_field :avatar, :class => "form-control", :placeholder => "Avatar"
-      %div.inputFields
-        = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email"
-      %div.inputFields
-        = f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password"
-      %div.inputFields
-        = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password Confirmation"
-      %div= f.submit "Sign up", :class => "btn btn-large btn-primary"
-      %br/
-      = render "devise/shared/links"
+.landingpage
+  %h3
+    = "your vinyls... " 
+    %br/
+    = "your shoes..."
+    %br/
+    = "your gems and your coins..."
+    %br/
+    = "they meant something special..."
+    %br/
+    %br/
+    %p
+      = "unbox your collections."
+  .signupform
+    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = devise_error_messages!
+      .container
+        %form.form-signin
+          %h2.form-signin-heading Sign up
+          %div.inputFields
+            = f.text_field :first_name, :class => "form-control", :placeholder => "First Name"
+          %div.inputFields
+            = f.text_field :last_name, :class => "form-control", :placeholder => "Last Name"
+          %div.inputFields
+            = f.text_field :avatar, :class => "form-control", :placeholder => "Avatar"
+          %div.inputFields
+            = f.email_field :email, autofocus: true, :class => "form-control", :placeholder => "Email"
+          %div.inputFields
+            = f.password_field :password, autocomplete: "off", :class => "form-control", :placeholder => "Password"
+          %div.inputFields
+            = f.password_field :password_confirmation, autocomplete: "off", :class => "form-control", :placeholder => "Password Confirmation"
+          %div= f.submit "Sign up", :class => "btn btn-large btn-primary"
+          %br/
+          = render "devise/shared/links"
+
